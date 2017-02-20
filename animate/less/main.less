@@ -1,0 +1,188 @@
+@bg-black: #333;
+@blue: #6cf;
+@red: #8d18df;
+
+@import "reset";
+
+html,
+body {
+    height: 100%;
+}
+body {
+    background-color: @bg-black;
+}
+
+.bg {
+    width: 100%;
+    min-width: 1000px;
+    height: 100%;
+    min-height: 800px;
+    background-color: @bg-black;
+    display: flex;
+    .player-info {
+        width: 40%;
+        display: flex;
+        main {
+            background-color: lighten(@bg-black, 20%);
+            flex: 8;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            .layer1 {
+                @color: #ccc;
+                width: 100%;
+                height: 100%;
+                background-image: 
+                    linear-gradient(@color 1px, transparent 0),
+                    linear-gradient(90deg,  @color 1px, transparent 0);
+                background-size: 20px 20px;
+                position: absolute;
+            }
+            .layer2 {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                img {
+                    height: 50%;
+                }
+                .name {
+                    margin: 20px;
+                    font-size: 40px;
+                    color: #fff;
+                }
+            }
+            .layer3 {
+                width: 100%;
+                height: 100%;
+                opacity: .4;
+                position: absolute;
+            }
+            .layer4 {
+                width: 100%;
+                height: 15%;
+                opacity: .4;
+                background-color: #fff;
+                position: absolute;
+            }
+        }
+        aside {
+            flex: 2;
+            background-color: @bg-black;
+            position: relative;
+            overflow: hidden;
+            .layer1 {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                font-size: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                writing-mode: vertical-rl;
+                position: absolute;
+            }
+            .layer2 {
+                .layer1;
+            }
+        }
+    }
+    >.left {
+        main {
+            .layer2 {
+                .name {
+                    text-shadow: 1px 1px 0 @blue, -1px -1px 0 @blue;
+                }
+            }
+            .layer3 {
+                background-color: @blue;
+            }
+            .layer4 {
+                animation: slideDown 3000ms infinite linear;
+            }
+        }
+        aside {
+            .layer1 {
+                top: 0;
+                text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff;
+                color: @blue;
+                transform: rotateZ(180deg);
+                animation: move 3000ms infinite linear;
+            }
+            .layer2 {
+                .layer1;
+                top: 50%;
+                animation-delay: 1500ms;
+            }
+            @keyframes move {
+                0% {
+                    top: -130%;
+                }
+                100% {
+                    top: 30%;
+                }
+            }
+        }
+    }
+    >.center {
+        width: 30%;
+        background-color: #000;
+    }
+    >.right {
+        main {
+            .layer2 {
+                .name {
+                    text-shadow: 1px 1px 0 @red, -1px -1px 0 @red;
+                }
+            }
+            .layer3 {
+                background-color: @red;
+            }
+            .layer4 {
+                animation: slideUp 3000ms infinite linear;
+            }
+        }
+        aside {
+            .layer1 {
+                top: 0;
+                text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff;
+                color: @red;
+                animation: move2 3000ms infinite linear;
+            }
+            .layer2 {
+                .layer1;
+                top: 130%;
+                animation-delay: 1500ms;
+            }
+            @keyframes move2 {
+                0% {
+                    top: 130%;
+                }
+                100% {
+                    top: -30%;
+                }
+            }
+        }
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        top: -15%;
+    }
+    100% {
+        top: 115%;
+    }
+}
+@keyframes slideUp {
+    0% {
+        top: 115%;
+    }
+    100% {
+        top: -15%;
+    }
+}

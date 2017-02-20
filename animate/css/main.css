@@ -1,0 +1,412 @@
+/**
+ * Global Reset of all HTML Elements
+ *
+ * Resetting all of our HTML Elements ensures a smoother
+ * visual transition between browsers. If you don't believe me,
+ * try temporarily commenting out this block of code, then go
+ * and look at Mozilla versus Safari, both good browsers with
+ * a good implementation of CSS. The thing is, all browser CSS
+ * defaults are different and at the end of the day if visual
+ * consistency is what we're shooting for, then we need to
+ * make sure we're resetting all spacing elements.
+ *
+ */
+html,
+body {
+  height: 100%;
+  border: 0;
+  font-family: "Helvetica-Neue", "Helvetica", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+div,
+span,
+object,
+iframe,
+img,
+table,
+caption,
+thead,
+tbody,
+tfoot,
+tr,
+tr,
+td,
+article,
+aside,
+canvas,
+details,
+figure,
+hgroup,
+menu,
+nav,
+footer,
+header,
+section,
+summary,
+mark,
+audio,
+video {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cit,
+code,
+del,
+dfn,
+em,
+ins,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+b,
+i,
+hr,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+legend,
+label {
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+}
+article,
+aside,
+canvas,
+figure,
+figure img,
+figcaption,
+hgroup,
+footer,
+header,
+nav,
+section,
+audio,
+video {
+  display: block;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+table caption,
+table th,
+table td {
+  text-align: left;
+  vertical-align: middle;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+a img {
+  border: 0;
+}
+:focus {
+  outline: 0;
+}
+* {
+  box-sizing: border-box;
+}
+textarea {
+  resize: none;
+  appearance: none;
+}
+input {
+  appearance: none;
+}
+select {
+  appearance: none;
+  background-color: #fff;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  background-color: #333333;
+}
+.bg {
+  width: 100%;
+  min-width: 1000px;
+  height: 100%;
+  min-height: 800px;
+  background-color: #333333;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.bg .player-info {
+  width: 40%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.bg .player-info main {
+  background-color: #666666;
+  -webkit-box-flex: 8;
+  -webkit-flex: 8;
+      -ms-flex: 8;
+          flex: 8;
+  position: relative;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.bg .player-info main .layer1 {
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-linear-gradient(#cccccc 1px, transparent 0), -webkit-linear-gradient(0deg, #cccccc 1px, transparent 0);
+  background-image: linear-gradient(#cccccc 1px, transparent 0), linear-gradient(90deg, #cccccc 1px, transparent 0);
+  background-size: 20px 20px;
+  position: absolute;
+}
+.bg .player-info main .layer2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.bg .player-info main .layer2 img {
+  height: 50%;
+}
+.bg .player-info main .layer2 .name {
+  margin: 20px;
+  font-size: 40px;
+  color: #fff;
+}
+.bg .player-info main .layer3 {
+  width: 100%;
+  height: 100%;
+  opacity: .4;
+  position: absolute;
+}
+.bg .player-info main .layer4 {
+  width: 100%;
+  height: 15%;
+  opacity: .4;
+  background-color: #fff;
+  position: absolute;
+}
+.bg .player-info aside {
+  -webkit-box-flex: 2;
+  -webkit-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  background-color: #333333;
+  position: relative;
+  overflow: hidden;
+}
+.bg .player-info aside .layer1 {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  writing-mode: vertical-rl;
+  position: absolute;
+}
+.bg .player-info aside .layer2 {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  writing-mode: vertical-rl;
+  position: absolute;
+}
+.bg > .left main .layer2 .name {
+  text-shadow: 1px 1px 0 #66ccff, -1px -1px 0 #66ccff;
+}
+.bg > .left main .layer3 {
+  background-color: #66ccff;
+}
+.bg > .left main .layer4 {
+  -webkit-animation: slideDown 3000ms infinite linear;
+          animation: slideDown 3000ms infinite linear;
+}
+.bg > .left aside .layer1 {
+  top: 0;
+  text-shadow: 2px 2px 0 #ffffff, -2px -2px 0 #ffffff;
+  color: #66ccff;
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+  -webkit-animation: move 3000ms infinite linear;
+          animation: move 3000ms infinite linear;
+}
+.bg > .left aside .layer2 {
+  top: 0;
+  text-shadow: 2px 2px 0 #ffffff, -2px -2px 0 #ffffff;
+  color: #66ccff;
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+  -webkit-animation: move 3000ms infinite linear;
+          animation: move 3000ms infinite linear;
+  top: 50%;
+  -webkit-animation-delay: 1500ms;
+          animation-delay: 1500ms;
+}
+@-webkit-keyframes move {
+  0% {
+    top: -130%;
+  }
+  100% {
+    top: 30%;
+  }
+}
+@keyframes move {
+  0% {
+    top: -130%;
+  }
+  100% {
+    top: 30%;
+  }
+}
+.bg > .center {
+  width: 30%;
+  background-color: #000;
+}
+.bg > .right main .layer2 .name {
+  text-shadow: 1px 1px 0 #8d18df, -1px -1px 0 #8d18df;
+}
+.bg > .right main .layer3 {
+  background-color: #8d18df;
+}
+.bg > .right main .layer4 {
+  -webkit-animation: slideUp 3000ms infinite linear;
+          animation: slideUp 3000ms infinite linear;
+}
+.bg > .right aside .layer1 {
+  top: 0;
+  text-shadow: 2px 2px 0 #ffffff, -2px -2px 0 #ffffff;
+  color: #8d18df;
+  -webkit-animation: move2 3000ms infinite linear;
+          animation: move2 3000ms infinite linear;
+}
+.bg > .right aside .layer2 {
+  top: 0;
+  text-shadow: 2px 2px 0 #ffffff, -2px -2px 0 #ffffff;
+  color: #8d18df;
+  -webkit-animation: move2 3000ms infinite linear;
+          animation: move2 3000ms infinite linear;
+  top: 130%;
+  -webkit-animation-delay: 1500ms;
+          animation-delay: 1500ms;
+}
+@-webkit-keyframes move2 {
+  0% {
+    top: 130%;
+  }
+  100% {
+    top: -30%;
+  }
+}
+@keyframes move2 {
+  0% {
+    top: 130%;
+  }
+  100% {
+    top: -30%;
+  }
+}
+@-webkit-keyframes slideDown {
+  0% {
+    top: -15%;
+  }
+  100% {
+    top: 115%;
+  }
+}
+@keyframes slideDown {
+  0% {
+    top: -15%;
+  }
+  100% {
+    top: 115%;
+  }
+}
+@-webkit-keyframes slideUp {
+  0% {
+    top: 115%;
+  }
+  100% {
+    top: -15%;
+  }
+}
+@keyframes slideUp {
+  0% {
+    top: 115%;
+  }
+  100% {
+    top: -15%;
+  }
+}
