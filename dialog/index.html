@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	</head>
+	<body>
+		<div class="bg">
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/dialog.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			let textList = [
+				"你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!你好!",
+				"我叫爱莲.",
+				"你会成为我的朋友的.",
+				"对吧!!"
+			]
+			let d =new Dialog(textList);
+			$(document).on("click", () => {
+				d.next();
+			})
+		</script>
+	</body>
+</html>

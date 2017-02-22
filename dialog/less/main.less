@@ -1,0 +1,60 @@
+@blue: #6cf;
+@orange: #f60;
+@red: #f06;
+@border-gray: #ddd;
+@bg-black: #333;
+
+@bg-black-alpha: rgba(0, 0, 0, .5);
+
+@import "reset";
+
+@size: 100px;
+@space: @size / 10;
+
+@normal: 30px;
+
+html,
+body {
+    height: 100%;
+}
+body {
+    background-color: @bg-black;
+    font-family: "微软雅黑";
+    overflow: hidden;
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/bg.jpg);
+}
+
+.dialog {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    z-index: 1;
+    position: fixed;
+    .content {
+        top: 70%;
+        left: 0;
+        width: 100%;
+        padding: @space @size;
+        transform: translateY(-50%);
+        background-color: @bg-black-alpha;
+        box-shadow: 0 0 @size / 2 @size / 2 @bg-black-alpha;
+        overflow: hidden;
+        position: absolute;
+        .text {
+            user-select: none;
+            transition: 2s;
+            &.normal {
+                letter-spacing: @space / 2;
+                font-size: @normal;
+            }
+    
+        }
+    }
+}
