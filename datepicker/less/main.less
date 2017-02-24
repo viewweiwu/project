@@ -1,0 +1,104 @@
+@blue: #6cf;
+@bg-black: #333;
+
+@import "reset";
+
+body {
+    background-color: #333;
+}
+
+
+.input-pnl {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+@size: 100px;
+@space: @size / 10;
+
+.center() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gray-font {
+    color: #777;
+}
+
+.picker {
+    width: @size * 3;
+    height: @size * 3;
+    background-color: #fff;
+    position: absolute;
+    user-select: none;
+    .picker-header {
+        height: @size / 2;
+        color: #fff;
+        background-color: @blue;
+        display: flex;
+        .left {
+            flex: 1;
+            cursor: pointer;
+            .center();
+        }
+        .center {
+            width: 60%;
+            .center();
+        }
+        .right {
+            flex: 1;
+            cursor: pointer;
+            .center();
+        }
+    }
+    .picker-body {
+        height: @size * 2.5;
+        position: relative;
+        .picker-week {
+            height: @size / 4;
+            display: flex;
+            li {
+                flex: 1;
+                text-align: center;
+            }
+        }
+        .picker-content{
+            width: 100%;
+            height: @size * 2.25;
+            overflow: hidden;
+            position: relative;
+            .picker-day {
+                width: @size * 3;
+                height: 100%;
+                background-color: #fff;
+                float: left;
+                overflow: hidden;
+                display: flex;
+                flex-wrap: wrap;
+                
+                li {
+                    width: 100% / 7;
+                    height: 100% / 6;
+                    cursor: pointer;
+                    .center();
+                    &:hover {
+                        color: #fff;
+                        background-color: @blue;
+                    }
+                    &.active {
+                        border: 1px solid @blue;
+                    }
+                }
+                
+            }
+        }
+        
+        @keyframes moveLeft {
+            0% { transform: translateX(100%) }
+            100% { transform: translateX(0%) }
+        }
+    }
+}
