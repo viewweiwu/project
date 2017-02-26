@@ -5,10 +5,25 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .btns {
+            top: 20px;
+            left: 20px;
+            position: fixed;
+        }
+    </style>
 </head>
 
-<body style="background-color: #333">
-    <canvas id="mainCanvas" width="800px" height="800px" style="margin: 50px auto; display: block; background-color: #fff"></canvas>
+<body>
+    <div class="btns">
+        <button>+</button>
+        <button>-</button>
+    </div>
     <script src="http://cdn.bootcss.com/three.js/r83/three.js"></script>
     <script src="./main.js"></script>
 </body>
