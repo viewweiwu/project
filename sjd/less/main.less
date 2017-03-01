@@ -1,0 +1,87 @@
+@size: 1rem;
+@space: @size / 5;
+@blue: #6cf;
+@orange: #f60;
+@red: #f06;
+@border-gray: #ddd;
+@bg-black: #333;
+
+@small: @normal * 0.8;
+@normal: 0.25rem;
+@big: @normal * 1.2;
+@x-big: @big * 1.2;
+@xx-big: @x-big * 1.2;
+
+@import "reset";
+@import "car-select";
+
+html,
+body {
+    height: 100%;
+}
+body {
+    background-color: @bg-black;
+    overflow: hidden;
+}
+
+
+body,
+html {
+    height: 100%;
+    font-family: "MicroSoft YaHei";
+    background-color: #ddd;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 7.5rem;
+    height: 100%;
+    margin: 0 auto;
+    font-size: @normal;
+    color: #333;
+    background-color: #f6f6f6;
+    position: relative;
+    overflow: auto;
+    >.header {
+        height: @size;
+        line-height: @size;
+        font-size: @big;
+        color: #fff;
+        background-color: #6cf;
+        position: relative;
+        overflow: hidden;
+        a {
+            width: 100%;
+            height: 100%;
+            color: inherit;
+            display: inherit;
+            box-sizing: border-box;
+        }
+        i {
+            font-size: inherit;
+        }
+        .left {
+            width: 25%;
+            height: 100%;
+            float: left;
+            a {
+                padding-left: @space;
+            }
+        }
+        .title {
+            width: 50%;
+            height: 100%;
+            float: left;
+            text-align: center;
+        }
+        .right {
+            width: 25%;
+            height: 100%;
+            float: left;
+            text-align: right;
+            a {
+                padding-right: @space;
+            }
+        }
+    }
+}

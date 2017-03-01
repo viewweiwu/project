@@ -8,19 +8,22 @@
             this.isMove = false;
             this.yDeg = 45;
             this.xDeg = 45;
-            this.zoom = 0;
-            this.keys = {};
-            this.btns = document.querySelectorAll("button");
             this.init();
             this.bind();
             this.render();
         }
         init() {
+            // 初始化 场景
             this.initScene();
+            // 初始化 照相机
             this.initCamera();
+            // 初始化 画布
             this.initRenderer();
+            // 初始化 灯光
             this.initLight();
+            // 初始化 墙壁
             this.initWall();
+            // 初始化 自行车
             this.initBike();
         }
         initScene() {
@@ -29,8 +32,13 @@
         initCamera() {
             let camera = new THREE.PerspectiveCamera(75, this.w / this.h, 1, 1000);
             this.scene.add(camera);
+            camera.position.set(15, 15, 15);
+            camera.lookAt({
+                x: 7,
+                y: 6,
+                z: 5
+            });
             this.camera = camera;
-            this.renderCamera(10, 10, 15);
         }
         initRenderer() {
             let renderer = new THREE.WebGLRenderer();
@@ -59,6 +67,7 @@
 
             // 移动到负距离
             let s = size / 2 - space;
+
             wall1.position.set(s, s, -space / 2);
             wall2.position.set(s, -space / 2, s);
             wall3.position.set(-space / 2, s, s);
@@ -68,12 +77,16 @@
             this.scene.add(wall3);
         }
         initBike() {
+            // 初始化 轮胎
             this.initWheel();
+            // 初始化 齿轮
             this.initGear();
+            // 初始化 支架
             this.initBracket();
+            // 初始化 座位
             this.initSeat();
+            // 初始化 方向盘
             this.initSteeringWheel();
-            // this.initChain();
         }
         initWheel() {
             let material = new THREE.MeshLambertMaterial({ color: 0x66ccff });
@@ -152,45 +165,13 @@
 
             this.scene.add(s);
         }
-        initChain() {
-            let material = new THREE.MeshLambertMaterial({ color: 0x66ccff });
-
-            let tc = new THREE.Mesh(new THREE.CylinderGeometry(.05, .05, 3.5, 20), material);
-            let bc = new THREE.Mesh(new THREE.CylinderGeometry(.05, .05, 2.75, 20), material);
-
-            tc.rotation.z = Math.PI / 2;
-
-            tc.position.set(6.75, 5, 5);
-            // bc.position.set(8.5, 5, 5);
-
-            this.scene.add(tc);
-            // this.scene.add(lg);
-
-        }
         render() {
             this.renderer.render(this.scene, this.camera);
-        }
-        renderCamera(x, y, z) {
-            this.camera.position.x = x + this.zoom;
-            this.camera.position.y = y + this.zoom;
-            this.camera.position.z = z + this.zoom;
-
-            this.camera.lookAt({
-                x: 7,
-                y: 4,
-                z: 5
-            });
         }
         bind() {
             this.el.addEventListener("mousedown", this.onMouseDown.bind(this));
             this.el.addEventListener("mousemove", this.onMouseMove.bind(this));
             this.el.addEventListener("mouseup", this.onMouseUp.bind(this));
-            this.btns[0].addEventListener("click", () => {
-                this.zoom--;
-            });
-            this.btns[1].addEventListener("click", () => {
-                this.zoom++;
-            });
         }
         onMouseDown(e) {
             this.isMove = true;
@@ -218,10 +199,19 @@
             p1 = util.getPoint(size, size, r, this.xDeg);
             p2 = util.getPoint(size, size, r, this.yDeg);
 
-            this.renderCamera(p1.x, p2.y, p1.y);
+            this.camera.position.x = p1.x;
+            this.camera.position.y = p2.y;
+            this.camera.position.z = p1.y;
+
+            this.camera.lookAt({
+                x: 5,
+                y: 5,
+                z: 5
+            });
 
             this.position.x = e.pageX;
             this.position.y = e.pageY;
+
             this.render();
         }
         onMouseUp(e) {

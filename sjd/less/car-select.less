@@ -1,0 +1,98 @@
+.container {
+    &.car-select {
+        .main {
+            height: e('calc(100% - 1rem)');
+            overflow: hidden;
+            position: relative;
+            user-select: none;
+            .type-select {
+                height: 100%;
+                top: 0;
+                right: 0;
+                z-index: 1;
+                position: absolute;
+                ul {
+                    height: 100%;
+                    li {
+                        height: 100% / 26;
+                        text-align: right;
+                        overflow: hidden;
+                        span {
+                            width: @space * 2;
+                            float: right;
+                            text-align: center;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+            .type-show {
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: @size * 1.5;
+                height: @size * 1.5;
+                line-height: @size * 1.5;
+                margin: auto;
+                border-radius: 50%;
+                font-size: @xx-big * 1.5;
+                color: #fff;
+                background-color: rgba(0, 0, 0, .5);
+                z-index: 1;
+                text-align: center;
+                position: absolute;
+                display: none;
+            }
+            .type-content {
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                position: relative;
+            }
+            .type-pnl {
+                .title {
+                    height: @size;
+                    line-height: @size;
+                    padding-left: @space * 2;
+                }
+            }
+        }
+        
+        .cell-list {
+            background-color: #fff;
+            padding-left: @space * 2;
+            li {
+                height: @size;
+                line-height: @size;
+                border-bottom: 1px solid @border-gray;
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+        
+        .right-page {
+            top: 0;
+            right: 0;
+            height: 100%;
+            z-index: 2;
+            background-color: #fff;
+            border-left: 1px solid @border-gray;
+            box-shadow: 0 0 @space / 2 @space / 2 @border-gray;
+            position: absolute;
+            overflow: auto;
+            &.parent {
+                width: 80%;
+            }
+            &.child {
+                width: 50%;
+            }
+            .content {
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+            }
+        }
+    }
+}

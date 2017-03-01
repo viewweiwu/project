@@ -1,0 +1,4 @@
+$(funciton() {
+	var ctrl = {
+	}
+});
