@@ -148,7 +148,10 @@ select {
   height: calc(100% - 1rem);
   overflow: hidden;
   position: relative;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .container.car-select .main .type-select {
   height: 100%;
@@ -208,23 +211,33 @@ select {
   height: 1rem;
   line-height: 1rem;
   border-bottom: 1px solid #dddddd;
+  cursor: pointer;
 }
 .container.car-select .cell-list li:last-child {
   border-bottom: none;
+}
+.container.car-select .cell-list li.active {
+  color: #ff6600;
 }
 .container.car-select .right-page {
   top: 0;
   right: 0;
   height: 100%;
-  z-index: 2;
   background-color: #fff;
   border-left: 1px solid #dddddd;
   box-shadow: 0 0 0.1rem 0.1rem #dddddd;
+  z-index: 2;
   position: absolute;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-transform: translateX(110%);
+      -ms-transform: translateX(110%);
+          transform: translateX(110%);
+  -webkit-transition: -webkit-transform 500ms;
+          transition: transform 500ms;
 }
 .container.car-select .right-page.parent {
-  width: 80%;
+  width: 70%;
 }
 .container.car-select .right-page.child {
   width: 50%;
@@ -233,6 +246,48 @@ select {
   width: 100%;
   height: 100%;
   overflow: auto;
+}
+.container.car-select .right-page .content .cell-list span {
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-left: 0.2rem;
+  border-radius: 50%;
+  vertical-align: middle;
+  display: inline-block;
+}
+.container.car-select .right-page .content .cell-list span.black {
+  background-color: black;
+}
+.container.car-select .right-page .content .cell-list span.silvery {
+  background-color: #eee;
+}
+.container.car-select .right-page .content .cell-list span.white {
+  border: 1px solid #dddddd;
+  background-color: white;
+}
+.container.car-select .right-page .content .cell-list span.red {
+  background-color: red;
+}
+.container.car-select .right-page .content .cell-list span.gold {
+  background-color: goldenrod;
+}
+.container.car-select .right-page .content .cell-list span.blue {
+  background-color: blue;
+}
+.container.car-select .right-page .content .cell-list span.brown {
+  background-color: brown;
+}
+.container.car-select .right-page .content .cell-list span.purple {
+  background-color: purple;
+}
+.container.car-select .right-page .content .cell-list span.green {
+  background-color: green;
+}
+.container.car-select .right-page .content .cell-list span.pink {
+  background-color: pink;
+}
+.container.car-select .right-page .content .cell-list span.yellow {
+  background-color: yellow;
 }
 html,
 body {
