@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	</head>
+	<body>
+		<div style="top: 50%; left: 50%; transform: translate(-50%, -50%); position: absolute;">
+			<button class="info">消息</button>
+			<button class="success">成功</button>
+			<button class="trophy">奖杯</button>
+		</div>
+		<footer class="footer">&copy; view 648764190</footer>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/msg2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(".info").on("click", () => {
+				new $.Msg({
+					icon: "info",
+					iconColor: "#6cf",
+					iconBg: "rgb(231, 244, 251)",
+					text: "你收到一条消息"
+				}).show();
+			});
+			$(".success").on("click", () => {
+				new $.Msg({
+					icon: "success",
+					iconColor: "green",
+					iconBg: "#d2ffd0",
+					text: "成功提交!"
+				}).show();
+			});
+			$(".trophy").on("click", () => {
+				new $.Msg({
+					icon: "trophy",
+					iconColor: "rgb(234, 207, 59)",
+					iconBg: "#333",
+					text: "这是你的奖杯嘛？"
+				}).show();
+			});
+		</script>
+	</body>
+</html>
