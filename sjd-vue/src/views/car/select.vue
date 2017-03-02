@@ -1,11 +1,11 @@
 <template>
     <div class="container car-select">
         <header class="header">
-            <div class="left">
+            <div class="left" @click="$router.go(-1)">
                 <i class="iconfont">&#xe660;</i>
             </div>
             <div class="title">{{selectText.content + " " + selectText.parent + " " + selectText.child}}</div>
-            <div class="right">
+            <div class="right" @click="onAddTypeBtnClick">
                 添加车型
             </div>
         </header>
@@ -173,6 +173,11 @@
             }]
         },
         methods: {
+            onAddTypeBtnClick() {
+                this.$router.push({
+                    name: 'car/addType'
+                });
+            },
             onStart(e) {
                 let $target = $(e.target);
                 // 开始移动

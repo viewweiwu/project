@@ -13,7 +13,9 @@
 
 <body>
     <div id="app" v-cloak>
-        <router-view></router-view>
+        <transition name="slide">
+            <router-view></router-view>
+        </transition>
     </div>
 </body>
 

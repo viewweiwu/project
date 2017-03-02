@@ -41,6 +41,14 @@ const routers = [{
         });
     }
 }, {
+    path: '/car/addType',
+    name: 'car/addType',
+    component(resolve) {
+        require.ensure(['./views/car/addType.vue'], () => {
+            resolve(require('./views/car/addType.vue'));
+        });
+    }
+}, {
     path: '/car/list',
     name: 'car/list',
     component(resolve) {
