@@ -5,6 +5,7 @@
 @red: #f06;
 @border-gray: #ddd;
 @bg-black: #333;
+@font-gray: #777;
 
 @small: @normal * 0.8;
 @normal: 0.25rem;
@@ -96,6 +97,10 @@ html {
             cursor: pointer;
         }
     }
+    .cell-title {
+        margin: @space;
+        color: @font-gray;
+    }
     .cell-list {
         background-color: #fff;
         padding-left: @space * 2;
@@ -111,11 +116,64 @@ html {
                 color: @orange;
             }
         }
+        &.cell-input {
+            margin: @space 0;
+            padding-left: 0;
+            li {
+                border: none;
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                label {
+                    margin: 0 @space;
+                }
+                .text {
+                    flex: 1;
+                    border: none;
+                }
+                .plate {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    .plate-select {
+                        width: @size - @space * 2;
+                        height: @size - @space * 2; 
+                        line-height: @size - @space * 2; 
+                        margin-right: @space / 2;
+                        border: 1px solid @orange;
+                        border-radius: 2px;
+                        background-color: #fff;
+                        text-align: center;
+                        position: relative;
+                        &:after {
+                            content: "";
+                            right: 1px;
+                            bottom: 1px;
+                            border-left: @space / 2 solid transparent;
+                            border-top: @space/ 2 solid transparent;
+                            border-right: @space / 2 solid @orange;
+                            border-bottom: @space / 2 solid @orange;
+                            position: absolute;
+                        }
+                    }
+                }
+                .arrow-right {
+                    margin: 0 @space;
+                }
+                input {
+                    flex: 1;
+                    height: 100%;
+                    padding-right: @space;
+                    border: none;
+                    font-size: inherit;
+                }
+            }
+        }
     }
     .btn {
-        width: 90%;
-        height: 1rem;
-        margin: @space auto;
+        width: 95%;
+        height: 1rem - @space;
+        margin: @space * 2 auto;
         border: none;
         border-radius: @space / 2;
         font-size: @big;

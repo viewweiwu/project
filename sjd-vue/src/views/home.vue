@@ -1,9 +1,7 @@
 <template>
     <div class="container home">
         <header class="header">
-            <div class="left">
-                <i class="iconfont">&#xe660;</i>
-            </div>
+            <div class="left"></div>
             <div class="title">首页</div>
             <div class="right"></div>
         </header>

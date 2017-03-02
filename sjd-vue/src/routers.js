@@ -17,19 +17,27 @@ const routers = [{
         });
     }
 }, {
-    path: '/changePwd',
-    name: 'changePwd',
+    path: '/resetPwd',
+    name: 'resetPwd',
     component(resolve) {
-        require.ensure(['./views/changePwd.vue'], () => {
-            resolve(require('./views/changePwd.vue'));
+        require.ensure(['./views/resetPwd.vue'], () => {
+            resolve(require('./views/resetPwd.vue'));
         });
     }
 }, {
-    path: '/login',
-    name: 'login',
+    path: '/login/login',
+    name: 'login/login',
     component(resolve) {
-        require.ensure(['./views/login.vue'], () => {
-            resolve(require('./views/login.vue'));
+        require.ensure(['./views/login/login.vue'], () => {
+            resolve(require('./views/login/login.vue'));
+        });
+    }
+}, {
+    path: '/login/register',
+    name: 'login/register',
+    component(resolve) {
+        require.ensure(['./views/login/register.vue'], () => {
+            resolve(require('./views/login/register.vue'));
         });
     }
 }, {
