@@ -1,0 +1,97 @@
+.container.home {
+    font-size: @big;
+    .main {
+        height: e('calc(100% - 2rem)');
+        .user {
+            color: #fff;
+            background-color: @blue;
+            .info {
+                height:  @size * 1.5;
+                line-height: @size * 1.5;
+                padding: 0 @space;
+                .face {
+                    width: @size * 1.5;
+                    display: inline-block;
+                    text-align: center;
+                    i {
+                        font-size: @size;
+                        vertical-align: middle;
+                    }
+                }
+            }
+            .report {
+                height:  @size * 1.5;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-bottom: 1px solid @border-gray;
+                div {
+                    width: 50%;
+                    float: left;
+                    position: relative;
+                    &:first-child {
+                        &:after {
+                            content: "";
+                            top: 15%;
+                            right: 0;
+                            width: 1px;
+                            height: 70%;
+                            background-color: #fff;
+                            position: absolute;
+                        }
+                    }
+                    p {
+                        text-align: center;
+                        &.score {
+                            font-size: @xx-big;
+                        }
+                        &.text {
+                            font-size: @normal;
+                        }
+                    }
+                }
+            }
+        }
+        .cell-list {
+            padding: 0;
+            margin: @space 0;
+            border-top: 1px solid @border-gray;
+            border-bottom: 1px solid @border-gray;
+            li {
+                overflow: hidden;
+                span {
+                    float: left;
+                    i {
+                        vertical-align: middle;
+                    }
+                }
+                .left,
+                .right {
+                    width: 10%;
+                    text-align: center
+                }
+                .center {
+                    width: 80%;
+                }
+            }
+        }
+    }
+    .footer {
+        height: @size;
+        line-height: @size;
+        background-color: #fff;
+        text-align: center;
+        .btn {
+            width: 90%;
+            height: 80%;
+            margin: 0 auto;
+            border: none;
+            border-radius: @space / 2;
+            font-size: @big;
+            color: #fff;
+            background-color: @orange;
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+}
