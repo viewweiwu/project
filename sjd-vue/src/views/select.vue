@@ -203,6 +203,7 @@
                 let $target = $(e.target);
                 this.selectText.child = $target.text();
                 this.open($target);
+                this.save();
             },
             onMove(e) {
                 e.stopPropagation();
@@ -249,6 +250,10 @@
                         "transform": "translateX(110%)"
                     });
                 }
+            },
+            save() {
+                sessionStorage.setItem("selectTypeData", JSON.stringify(this.selectText));
+                this.$router.go(-1);
             },
             // 移动到对应主题对应字母的头部
             scrollToTitle($target) {

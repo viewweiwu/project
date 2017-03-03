@@ -65,11 +65,11 @@ const routers = [{
         });
     }
 }, {
-    path: '/car/select',
-    name: 'car/select',
+    path: '/select',
+    name: 'select',
     component(resolve) {
-        require.ensure(['./views/car/select.vue'], () => {
-            resolve(require('./views/car/select.vue'));
+        require.ensure(['./views/select.vue'], () => {
+            resolve(require('./views/select.vue'));
         });
     }
 }, {

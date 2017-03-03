@@ -1,21 +1,8 @@
-@size: 1rem;
-@space: @size / 5;
-@blue: #6cf;
-@orange: #f60;
-@red: #f06;
-@border-gray: #ddd;
-@bg-black: #333;
-@font-gray: #777;
-
-@small: @normal * 0.8;
-@normal: 0.25rem;
-@big: @normal * 1.2;
-@x-big: @big * 1.2;
-@xx-big: @x-big * 1.2;
-
+@import "var";
 @import "reset";
 @import "home";
 @import "car/select";
+@import "login/register";
 
 html,
 body {
@@ -49,6 +36,8 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-input-placeholder{color:@placeholder-color;}
+
 #app {
     max-width: 7.5rem;
     height: 100%;
@@ -58,6 +47,7 @@ html {
 }
 
 .container {
+    width: 100%;
     height: 100%;
     font-size: @normal;
     color: #333;
@@ -114,59 +104,6 @@ html {
             }
             &.active {
                 color: @orange;
-            }
-        }
-        &.cell-input {
-            margin: @space 0;
-            padding-left: 0;
-            li {
-                border: none;
-                position: relative;
-                overflow: hidden;
-                display: flex;
-                label {
-                    margin: 0 @space;
-                }
-                .text {
-                    flex: 1;
-                    border: none;
-                }
-                .plate {
-                    flex: 1;
-                    display: flex;
-                    align-items: center;
-                    .plate-select {
-                        width: @size - @space * 2;
-                        height: @size - @space * 2; 
-                        line-height: @size - @space * 2; 
-                        margin-right: @space / 2;
-                        border: 1px solid @orange;
-                        border-radius: 2px;
-                        background-color: #fff;
-                        text-align: center;
-                        position: relative;
-                        &:after {
-                            content: "";
-                            right: 1px;
-                            bottom: 1px;
-                            border-left: @space / 2 solid transparent;
-                            border-top: @space/ 2 solid transparent;
-                            border-right: @space / 2 solid @orange;
-                            border-bottom: @space / 2 solid @orange;
-                            position: absolute;
-                        }
-                    }
-                }
-                .arrow-right {
-                    margin: 0 @space;
-                }
-                input {
-                    flex: 1;
-                    height: 100%;
-                    padding-right: @space;
-                    border: none;
-                    font-size: inherit;
-                }
             }
         }
     }

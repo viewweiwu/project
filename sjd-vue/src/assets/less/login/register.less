@@ -1,0 +1,27 @@
+.container.register {
+    .main {
+        width: 100%;
+        height: e('calc(100% - 1rem)');
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        .right-page {
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background-color: #fff;
+            border-left: 1px solid @border-gray;
+            box-shadow: 0 0 @space / 2 @space / 2 @border-gray;
+            z-index: 2;
+            position: absolute;
+            overflow-x: hidden;
+            overflow-y: auto;
+            transform: translateX(110%);
+            transition: transform 500ms;
+            &.open {
+                transform: translateX(0);
+            }
+        }
+    }
+}
