@@ -38,12 +38,25 @@
                     <span class="center">我的车辆</span>
                     <span class="right"><i class="iconfont">&#xe65f;</i></span>
                 </li>
+            </ul>
+            <ul class="cell-list">
                 <li @click="onChangePwdClick">
                     <span class="left"><i class="iconfont">&#xe6c0;</i></span>
                     <span class="center">修改密码</span>
                     <span class="right"><i class="iconfont">&#xe65f;</i></span>
                 </li>
+                <li @click="onLoginOutClick">
+                    <span class="left"><i class="iconfont">&#xe6c0;</i></span>
+                    <span class="center red-font">退出登录</span>
+                    <span class="right"><i class="iconfont">&#xe65f;</i></span>
+                </li>
+                <li @click="onRegisterClick">
+                    <span class="left"><i class="iconfont">&#xe6c0;</i></span>
+                    <span class="center red-font">注册</span>
+                    <span class="right"><i class="iconfont">&#xe65f;</i></span>
+                </li>
             </ul>
+            
         </main>
         <footer class="footer">
             <button class="btn">开始听单</button>
@@ -72,6 +85,16 @@
             onChangePwdClick() {
                 this.$router.push({
                     name: 'changePwd'
+                });
+            },
+            onLoginOutClick() {
+                this.$router.push({
+                    name: 'login/login'
+                });
+            },
+            onRegisterClick() {
+                this.$router.push({
+                    name: 'login/register'
                 });
             }
         }

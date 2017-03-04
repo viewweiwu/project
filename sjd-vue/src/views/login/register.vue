@@ -16,45 +16,50 @@
                     <label>城市</label>
                     <div class="text" v-show="city != ''">{{city}}</div>
                     <div class="placeholder" v-show="city == ''">请选择城市</div>
-                    <i class="iconfont arrow-right">&#xe65f;</i>
+                    <i class="iconfont">&#xe65f;</i>
                 </li>
                 <li>
                     <label>车牌号</label>
                     <div class="plate">
                         <span class="plate-select" @click="plateOpen = true">{{plateFirst}}</span>
-                        <input placeholder="请输入车牌号" v-model="plateLast" @input="onPlateInput" maxlength="6">
+                        <input placeholder="请输入车牌号" v-model="plateLast" @input="save()" maxlength="6">
+                        <i class="iconfont" @click="plateLast = ''; save()" v-if="plateLast != ''">&#xe641;</i>
                     </div>
                 </li>
                 <li @click="onTypeClick">
                     <label>车型</label>
                     <div class="text" v-show="type != ''">{{type}}</div>
                     <div class="placeholder" v-show="type == ''">请选择车型</div>
-                    <i class="iconfont arrow-right">&#xe65f;</i>
+                    <i class="iconfont">&#xe65f;</i>
                 </li>
                 <li>
                     <label>车主姓名</label>
-                    <input class="text" type="text" placeholder="请输入车主姓名" v-model="ownerName" @input="onOwnerNameInput" maxlength="20">
+                    <input class="text" type="text" placeholder="请输入车主姓名" v-model="ownerName" @input="save()" maxlength="20">
+                    <i class="iconfont" @click="ownerName = ''; save()" v-if="ownerName != ''">&#xe641;</i>
                 </li>
                 <li @click="$refs.registerDatePicker.open()">
                     <label>车辆注册日期</label>
-                    <div class="text">{{registerDateText | date}}</div>
-                    <i class="iconfont arrow-right">&#xe65f;</i>
+                    <div class="placeholder" v-show="registerDateText == ''">请选择车辆注册日期</div>
+                    <div class="text" v-show="registerDateText != ''">{{registerDateText | date}}</div>
+                    <i class="iconfont">&#xe65f;</i>
                 </li>
             </ul>
             <p class="cell-title">个人信息</p>
             <ul class="cell-list cell-input">
                 <li>
                     <label>司机姓名</label>
-                    <input class="text" type="text" placeholder="请输入司机姓名" v-model="userNmae" @input="save()" maxlength="20">
+                    <input class="text" type="text" placeholder="请输入司机姓名" v-model="userName" @input="save()" maxlength="20">
+                    <i class="iconfont" @click="userName = ''; save()" v-if="userName != ''">&#xe641;</i>
                 </li>
                 <li>
                     <label>身份证</label>
-                    <input class="text" type="text" placeholder="请输入身份证">
+                    <input class="text" type="text" placeholder="请输入身份证" v-model="idCard" @input="save()" maxlength="18">
+                    <i class="iconfont" @click="idCard = ''; save()" v-if="idCard != ''">&#xe641;</i>
                 </li>
                 <li @click="$refs.firstGetDatePicker.open()">
                     <label>初次领取驾照日期</label>
                     <div class="text">{{firstGetDateText | date}}</div>
-                    <i class="iconfont arrow-right">&#xe65f;</i>
+                    <i class="iconfont">&#xe65f;</i>
                 </li>
             </ul>
             <button class="btn">提交</button>
@@ -85,12 +90,12 @@
                 plateData: [],
                 selectTypeData: {},
                 ownerName: "",
-                registerDate: null,
-                registerDateText: null,
-                userNmae: "",
+                registerDate: "",
+                registerDateText: "",
+                userName: "",
                 idCard: "",
-                firstGetDate: null,
-                firstGetDateText: null,
+                firstGetDate: "",
+                firstGetDateText: ""
             }
         },
         mounted() {;
@@ -111,6 +116,7 @@
             },
             onFirstGetDateConfirm(value) {
                 this.firstGetDateText = value;
+                this.save();
             },
             onCitySelect(value) {
                 this.city = value;
@@ -120,12 +126,6 @@
             onPlateSelect(value) {
                 this.plateFirst = value;
                 this.plateOpen = false;
-                this.save();
-            },
-            onPlateInput() {
-                this.save();
-            },
-            onOwnerNameInput() {
                 this.save();
             },
             onTypeClick() {
@@ -143,6 +143,10 @@
                     ownerName: this.ownerName,
                     registerDate: this.registerDate,
                     registerDateText: this.registerDateText,
+                    userName: this.userName,
+                    idCard: this.idCard,
+                    firstGetDate: this.firstGetDate,
+                    firstGetDateText: this.firstGetDateText
                 }
 
                 sessionStorage.setItem("registerData", JSON.stringify(obj));
@@ -150,13 +154,25 @@
             setData() {
                 let obj = {};
                 obj = JSON.parse(sessionStorage.getItem("registerData")) || {}; 
-                this.city = obj['city'];
-                this.selectTypeData = obj['selectTypeData'];
-                this.plateFirst = obj['plateFirst'];
-                this.plateLast = obj['plateLast'];
-                this.ownerName = obj['ownerName'];
-                this.registerDate = new Date(obj['registerDate']);
-                this.registerDateText = new Date(obj['registerDateText']);
+                this.city = obj['city'] || "";
+                this.selectTypeData = obj['selectTypeData'] || "";
+                this.plateFirst = obj['plateFirst'] || "";
+                this.plateLast = obj['plateLast'] || "";
+                this.ownerName = obj['ownerName'] || "";
+                if(obj['registerDate']) {
+                    this.registerDate = new Date(obj['registerDate']);
+                }
+                if(obj['registerDateText']) {
+                    this.registerDateText = new Date(obj['registerDateText']);
+                }
+                this.userName = obj['userName'] || "";
+                this.idCard = obj['idCard'] || "";
+                if(obj['firstGetDate']) {
+                    this.firstGetDate = new Date(obj['firstGetDate']);
+                }
+                if(obj['firstGetDateText']) {
+                    this.firstGetDateText = new Date(obj['firstGetDateText']);
+                }
             }
         },
         computed: {
@@ -169,7 +185,7 @@
         },
         filters: {
             date(value) {
-                if(value === null) return "";
+                if(value === "") return "";
                 let result = "";
                 let year = value.getFullYear();
                 let month = value.getMonth() + 1;
