@@ -1,8 +1,7 @@
 <template>
     <div class="container login">
         <header class="header">
-            <div class="left">
-            </div>
+            <div class="left"></div>
             <div class="title">登陆</div>
             <div class="right"></div>
         </header>
@@ -11,7 +10,7 @@
                 <input-cell label="登录名" type="text" @input="onUsernameInput" max="20"></input-cell>
                 <input-cell label="密码" type="password" @input="onPasswordInput" max="20"></input-cell>
             </ul>
-            <button class="btn">登录</button>
+            <button class="btn" @click="onLoginBtnClick">登录</button>
             <div class="btns">
                 <div class="left" @click="onForgetPwdBtnClick">忘记密码</div>
                 <div class="right" @click="onRegisterBtnClick">新用户注册</div>
@@ -38,6 +37,11 @@
             },
             onPasswordInput(value) {
                 this.password = value;
+            },
+            onLoginBtnClick() {
+                this.$router.push({
+                    name: "home"
+                })
             },
             onForgetPwdBtnClick() {
                 this.$router.push({

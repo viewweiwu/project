@@ -3,7 +3,7 @@
         <label>{{label}}</label>
         <template v-if="this.type != 'select'">
             <input :placeholder="placeholder" type="text" v-model="value" @input="onInput" :maxlength="max" ref="input">
-            <i class="iconfont" @touchstart="onStart" @touchend="onEnd" v-if="type == 'password'">&#xe71e;</i>
+            <i class="iconfont" @touchstart.prevent="onStart" @touchend.prevent="onEnd" v-if="type == 'password'">&#xe71e;</i>
             <i class="iconfont" @click.stop="onClearBtnClick" v-if="value != ''">&#xe641;</i>
         </template>
         <template v-if="this.type == 'select'">

@@ -1,0 +1,114 @@
+.container.trip-list {
+    .main {
+        width: 100%;
+        height: e('calc(100% - 1rem)');
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        .card-list {
+            overflow: hidden;
+            h3 {
+                margin: @space @space * 2.5 0;
+                position: relative;
+                &:before {
+                    content: "";
+                    top: 0;
+                    left: -@space;
+                    width: @space / 2;
+                    height: 100%;
+                    border-radius: @space / 2;
+                    background-color: @orange;
+                    position: absolute;
+                }
+            }
+            .card {
+                margin: @space;
+                padding: @space;
+                border: 1px solid @border-gray;
+                border-radius: @space / 2;
+                background-color: #fff;
+                overflow: hidden;
+                .header {
+                    height: @size / 2;
+                    line-height: @size / 2;
+                    overflow: hidden;
+                    .type {
+                        width: @size / 2;
+                        height: @size / 2;
+                        margin-right: @space;
+                        border: 1px solid #eee;
+                        border-radius: 50%;
+                        float: left;
+                        text-align: center;
+                    }
+                    .time {
+                        color: black;
+                        font-size: @big;
+                        float: left;
+                    }
+                    .price {
+                        margin-right: @space;
+                        float: right;
+                    }
+                    .state {
+                        float: right;
+                    }
+                }
+                p {
+                    line-height: @size / 2;
+                    padding-left: @size / 2 + @space;
+                    font-size: @big;
+                    position: relative;
+                    &:before {
+                        content: "";
+                        top: 50%;
+                        left: @space / 2;
+                        width: @space / 2;
+                        height: @space / 2;
+                        border-radius: 50%;
+                        background-color: #fff;
+                        z-index: 1;
+                        position: absolute;
+                        transform: translateY(-50%);
+                    }
+                    &:after {
+                        content: "";
+                        bottom: 0;
+                        left: @space;
+                        width: 1px;
+                        height: 50%;
+                        background-color: @border-gray;
+                        z-index: 0;
+                        position: absolute;
+                    }
+                }
+                .from {
+                    margin-top: @space;
+                    &:before {
+                        border: @space / 3 solid greenyellow;
+                    }
+                }
+                .to {
+                    &:before {
+                        border: @space / 3 solid pink;
+                    }
+                    &:after {
+                        top: 0;
+                        bottom: auto;
+                    }
+                }
+                .tag {
+                    margin-top: @space;
+                    margin-left: @size / 2;
+                    span {
+                        padding: 0 @space / 2;
+                        margin-left: @space;
+                        border: 1px solid @border-gray;
+                        color: @font-gray;
+                    }
+                }
+            }
+        }
+
+    }
+}

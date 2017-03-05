@@ -4,7 +4,7 @@
             <div class="left" @click="$router.go(-1)">
                 <i class="iconfont">&#xe660;</i>
             </div>
-            <div class="title">行程列表</div>
+            <div class="title">订单详情</div>
             <div class="right"></div>
         </header>
         <main class="main">
@@ -36,9 +36,7 @@
         },
         methods: {
             onCardClick() {
-                this.$router.push({
-                    name: 'trip/detail'
-                });
+                
             }
         }
     }

@@ -4,13 +4,12 @@
             <div class="left" @click="$router.go(-1)">
                 <i class="iconfont">&#xe660;</i>
             </div>
-            <div class="title">验证身份</div>
+            <div class="title">输入验证码</div>
             <div class="right"></div>
         </header>
         <main class="main">
             <ul class="cell-list cell-input">
-                <input-cell label="手机" type="text" @input="onTelInput" max="20"></input-cell>
-                <input-cell label="身份证" type="text" @input="onIdCardInput" max="20"></input-cell>
+                <input-cell label="验证码" type="text" @input="onIdCardInput" max="4"></input-cell>
             </ul>
             <button class="btn" @click="onSubmitBtnClick">下一步</button>
         </main>
@@ -38,7 +37,7 @@
             },
             onSubmitBtnClick() {
                 this.$router.push({
-                    name: "login/forgetPwd2"
+                    name: "login/forgetPwd3"
                 })
             }
         }

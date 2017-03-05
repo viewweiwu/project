@@ -4,15 +4,14 @@
             <div class="left" @click="$router.go(-1)">
                 <i class="iconfont">&#xe660;</i>
             </div>
-            <div class="title">验证身份</div>
+            <div class="title">输入新密码</div>
             <div class="right"></div>
         </header>
         <main class="main">
             <ul class="cell-list cell-input">
-                <input-cell label="手机" type="text" @input="onTelInput" max="20"></input-cell>
-                <input-cell label="身份证" type="text" @input="onIdCardInput" max="20"></input-cell>
+                <input-cell label="新密码" type="password" @input="onPasswordInput" max="4"></input-cell>
             </ul>
-            <button class="btn" @click="onSubmitBtnClick">下一步</button>
+            <button class="btn" @click="onSubmitBtnClick">完成</button>
         </main>
     </div>
 </template>
@@ -25,20 +24,16 @@
         },
         data() {
             return {
-                tel: "",
-                idCard: ""
+                password: ""
             }
         },
         methods: {
-            onTelInput(value) {
-                this.tel = value;
-            },
-            onIdCardInput(value) {
-                this.idCard = value;
+            onPasswordInput(value) {
+                this.password = value;
             },
             onSubmitBtnClick() {
                 this.$router.push({
-                    name: "login/forgetPwd2"
+                    name: "home"
                 })
             }
         }

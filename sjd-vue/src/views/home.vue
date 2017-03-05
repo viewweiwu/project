@@ -50,11 +50,6 @@
                     <span class="center red-font">退出登录</span>
                     <span class="right"><i class="iconfont">&#xe65f;</i></span>
                 </li>
-                <li @click="onRegisterClick">
-                    <span class="left"><i class="iconfont">&#xe6c0;</i></span>
-                    <span class="center red-font">注册</span>
-                    <span class="right"><i class="iconfont">&#xe65f;</i></span>
-                </li>
             </ul>
             
         </main>

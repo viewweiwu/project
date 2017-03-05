@@ -41,6 +41,22 @@ const routers = [{
         });
     }
 }, {
+    path: '/login/forgetPwd2',
+    name: 'login/forgetPwd2',
+    component(resolve) {
+        require.ensure(['./views/login/forgetPwd2.vue'], () => {
+            resolve(require('./views/login/forgetPwd2.vue'));
+        });
+    }
+}, {
+    path: '/login/forgetPwd3',
+    name: 'login/forgetPwd3',
+    component(resolve) {
+        require.ensure(['./views/login/forgetPwd3.vue'], () => {
+            resolve(require('./views/login/forgetPwd3.vue'));
+        });
+    }
+}, {
     path: '/login/register',
     name: 'login/register',
     component(resolve) {
@@ -86,6 +102,14 @@ const routers = [{
     component(resolve) {
         require.ensure(['./views/trip/list.vue'], () => {
             resolve(require('./views/trip/list.vue'));
+        });
+    }
+}, {
+    path: '/trip/detail',
+    name: 'trip/detail',
+    component(resolve) {
+        require.ensure(['./views/trip/detail.vue'], () => {
+            resolve(require('./views/trip/detail.vue'));
         });
     }
 }, {
