@@ -12,57 +12,25 @@
         <main class="main">
             <p class="cell-title">车辆信息</p>
             <ul class="cell-list cell-input">
-                <li @click="cityOpen = true">
-                    <label>城市</label>
-                    <div class="text" v-show="city != ''">{{city}}</div>
-                    <div class="placeholder" v-show="city == ''">请选择城市</div>
-                    <i class="iconfont">&#xe65f;</i>
-                </li>
+                <input-cell label="城市" type="select" :selected="city" @click="cityOpen = true"></input-cell>
                 <li>
                     <label>车牌号</label>
                     <div class="plate">
                         <span class="plate-select" @click="plateOpen = true">{{plateFirst}}</span>
-                        <input placeholder="请输入车牌号" v-model="plateLast" @input="save()" maxlength="6">
-                        <i class="iconfont" @click="plateLast = ''; save()" v-if="plateLast != ''">&#xe641;</i>
+                        <input placeholder="请输入车牌号" v-model="plateLast" @input="onPlateInput" maxlength="6" ref="plate">
+                        <i class="iconfont" @click="onPlateClearBtnClick" v-if="plateLast != ''">&#xe641;</i>
                     </div>
                 </li>
-                <li @click="onTypeClick">
-                    <label>车型</label>
-                    <div class="text" v-show="type != ''">{{type}}</div>
-                    <div class="placeholder" v-show="type == ''">请选择车型</div>
-                    <i class="iconfont">&#xe65f;</i>
-                </li>
-                <li>
-                    <label>车主姓名</label>
-                    <input class="text" type="text" placeholder="请输入车主姓名" v-model="ownerName" @input="save()" maxlength="20">
-                    <i class="iconfont" @click="ownerName = ''; save()" v-if="ownerName != ''">&#xe641;</i>
-                </li>
-                <li @click="$refs.registerDatePicker.open()">
-                    <label>车辆注册日期</label>
-                    <div class="placeholder" v-show="registerDateText == ''">请选择车辆注册日期</div>
-                    <div class="text" v-show="registerDateText != ''">{{registerDateText | date}}</div>
-                    <i class="iconfont">&#xe65f;</i>
-                </li>
+                <input-cell label="车型" type="select" :selected="type" @click="onTypeClick"></input-cell>
+                <input-cell label="车主姓名" type="text" @input="onOwnerNameInput" max="20"></input-cell>
+                <input-cell label="车辆注册日期" type="select" :selected="registerDateText | date" @click="$refs.registerDatePicker.open()"></input-cell>
             </ul>
             <p class="cell-title">个人信息</p>
             <ul class="cell-list cell-input">
-                <li>
-                    <label>司机姓名</label>
-                    <input class="text" type="text" placeholder="请输入司机姓名" v-model="userName" @input="save()" maxlength="20">
-                    <i class="iconfont" @click="userName = ''; save()" v-if="userName != ''">&#xe641;</i>
-                </li>
-                <li>
-                    <label>身份证</label>
-                    <input class="text" type="text" placeholder="请输入身份证" v-model="idCard" @input="save()" maxlength="18">
-                    <i class="iconfont" @click="idCard = ''; save()" v-if="idCard != ''">&#xe641;</i>
-                </li>
-                <li @click="$refs.firstGetDatePicker.open()">
-                    <label>初次领取驾照日期</label>
-                    <div class="text">{{firstGetDateText | date}}</div>
-                    <i class="iconfont">&#xe65f;</i>
-                </li>
+                <input-cell label="司机姓名" type="text" @input="onUserNameInput" max="20"></input-cell>
+                <input-cell label="身份证" type="number" @input="onIdCardInput" max="18"></input-cell>
+                <input-cell label="初次领取驾照日期" type="select" :selected="firstGetDateText | date" @click="$refs.firstGetDatePicker.open()"></input-cell>
             </ul>
-            <button class="btn">提交</button>
             <div :class="['right-page', {open: cityOpen}]">
                 <ul class="cell-list">
                     <li v-for="item in cityData" @click="onCitySelect(item)">{{item}}</li>
@@ -74,11 +42,18 @@
                 </ul>
             </div>
         </main>
+        <footer class="footer">
+            <button class="btn">提交</button>
+        </footer>
     </div>
 </template>
 
 <script>
+    import inputCell from "../../components/inputCell.vue";
     export default {
+        components: {
+            inputCell
+        },
         data() {
             return {
                 city: "",
@@ -110,6 +85,27 @@
             this.save();
         },
         methods: {
+            onPlateInput() {
+                this.plateLast = this.plateLast.toUpperCase();
+                this.save();
+            },
+            onPlateClearBtnClick() {
+                this.plateLast = '';
+                this.$refs.plate.focus();
+                this.save();
+            },
+            onOwnerNameInput(value) {
+                this.ownerName = value;
+                this.save();
+            },
+            onUserNameInput(value) {
+                this.userName = value;
+                this.save();
+            },
+            onIdCardInput(value) {
+                this.idCard = value;
+                this.save();
+            },
             onRegisterDateConfirm(value) {
                 this.registerDateText = value;
                 this.save();

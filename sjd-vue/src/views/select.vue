@@ -20,20 +20,20 @@
                 <div class="type-pnl" v-for="t in typeList">
                     <div class="title">{{t.title}}</div>
                     <ul class="cell-list">
-                        <li v-for="item in t.list" @click="onContentClick">{{item.text}}</li>
+                        <li v-for="item in t.list" @click.stop="onContentClick">{{item.text}}</li>
                     </ul>
                 </div>
             </div>
             <div class="right-page parent" ref="parent">
                 <div class="content">
                     <ul class="cell-list" id="list">
-                        <li v-for="item in parentList" @click="onParentClick">{{item.text}}</li>
+                        <li v-for="item in parentList" @click.stop="onParentClick">{{item.text}}</li>
                     </ul>
                 </div>
                 <div class="right-page child" ref="child">
                     <div class="content">
                         <ul class="cell-list">
-                            <li v-for="item in colors" @click="opChildClick">{{item.text}}<span :class="item.style"></span></li>
+                            <li v-for="item in colors" @click.stop="opChildClick">{{item.text}}<span :class="item.style"></span></li>
                         </ul>
                     </div>
                 </div>
@@ -201,6 +201,9 @@
             },
             opChildClick(e) {
                 let $target = $(e.target);
+                if($target.is("span")) {
+                    $target = $target.parent();
+                }
                 this.selectText.child = $target.text();
                 this.open($target);
                 this.save();

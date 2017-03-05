@@ -33,6 +33,14 @@ const routers = [{
         });
     }
 }, {
+    path: '/login/forgetPwd',
+    name: 'login/forgetPwd',
+    component(resolve) {
+        require.ensure(['./views/login/forgetPwd.vue'], () => {
+            resolve(require('./views/login/forgetPwd.vue'));
+        });
+    }
+}, {
     path: '/login/register',
     name: 'login/register',
     component(resolve) {

@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container login">
         <header class="header">
             <div class="left">
             </div>
@@ -8,26 +8,24 @@
         </header>
         <main class="main">
             <ul class="cell-list cell-input">
-                <li>
-                    <label>登录名</label>
-                    <input class="text" type="text" placeholder="请输入登录名" v-model="username" maxlength="20">
-                    <i class="iconfont" @click="username = ''" v-if="username != ''">&#xe641;</i>
-                </li>
-                <li>
-                    <label>密码</label>
-                    <input class="text" type="password" placeholder="请输入登录名" v-model="password" maxlength="20"
-                     ref="password">
-                    <i class="iconfont"  @touchstart.prevent="onStart" @touchend="onEnd" v-if="password != ''">&#xe71f;</i>
-                    <i class="iconfont" @click.stop="password = ''" v-if="password != ''">&#xe641;</i>
-                </li>
+                <input-cell label="登录名" type="text" @input="onUsernameInput" max="20"></input-cell>
+                <input-cell label="密码" type="password" @input="onPasswordInput" max="20"></input-cell>
             </ul>
             <button class="btn">登录</button>
+            <div class="btns">
+                <div class="left" @click="onForgetPwdBtnClick">忘记密码</div>
+                <div class="right" @click="onRegisterBtnClick">新用户注册</div>
+            </div>
         </main>
     </div>
 </template>
 
 <script>
+    import inputCell from "../../components/inputCell.vue";
     export default {
+        components: {
+            inputCell
+        },
         data() {
             return {
                 username: "",
@@ -35,11 +33,21 @@
             }
         },
         methods: {
-            onStart() {
-                this.$refs.password.type = "text";
+            onUsernameInput(value) {
+                this.username = value;
             },
-            onEnd() {
-                this.$refs.password.type = "password";
+            onPasswordInput(value) {
+                this.password = value;
+            },
+            onForgetPwdBtnClick() {
+                this.$router.push({
+                    name: 'login/forgetPwd'
+                });
+            },
+            onRegisterBtnClick() {
+                this.$router.push({
+                    name: 'login/register'
+                });
             }
         }
     }
@@ -50,6 +58,19 @@
     .cell-input {
         label {
             width: @size;
+        }
+    }
+    .container.login {
+        .btns {
+            color: @orange;
+            margin: @space;
+            overflow: hidden;
+            .left {
+                float: left;
+            }
+            .right {
+                float: right;
+            }
         }
     }
 </style>
