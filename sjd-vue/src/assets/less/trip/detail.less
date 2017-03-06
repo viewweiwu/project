@@ -1,0 +1,55 @@
+.container.trip-detail {
+    .main {
+        width: 100%;
+        height: e('calc(100% - 1rem)');
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        .card-list {
+            overflow: hidden;
+            h3 {
+                margin: @space @space * 2.5 0;
+                position: relative;
+                &:before {
+                    content: "";
+                    top: 10%;
+                    left: -@space;
+                    width: @space / 2;
+                    height: 80%;
+                    border-radius: @space / 2;
+                    background-color: @orange;
+                    position: absolute;
+                }
+                &.green {
+                    &:before {
+                        background-color: #59c859;
+                    }
+                }
+            }
+            .card {
+                margin: @space;
+                padding: @space;
+                border: 1px solid @border-gray;
+                border-radius: @space / 2;
+                background-color: #fff;
+                box-shadow: @space / 3 @space / 3 @space / 2 @border-gray;
+                overflow: hidden;
+                p {
+                    line-height: @size / 2;
+                    font-size: @normal;
+                    position: relative;
+                    overflow: hidden;
+                    .label {
+                        width: 25%;
+                        float: left;
+                    }
+                    .text {
+                        width: 75%;
+                        float: left;
+                    }
+                }
+            }
+        }
+
+    }
+}

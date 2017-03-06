@@ -1,0 +1,54 @@
+.container.car-list {
+    .main {
+        width: 100%;
+        height: e('calc(100% - 2rem)');
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        .card-list {
+            overflow: hidden;
+            .card {
+                margin: @space;
+                padding: @space;
+                background-color: #fff;
+                border: 1px solid @border-gray;
+                border-radius: @space / 2;
+                box-shadow: @space / 3 @space / 3 @space / 2 @border-gray;
+                text-align: center;
+                h2 {
+                    font-size: @x-big;
+                    font-weight: lighter;
+                }
+                h3 {
+                    font-size: @normal;
+                    font-weight: lighter;
+                    color: @font-gray;
+                }
+                img {
+                    width: 50%;
+                    margin: @space 0;
+                }
+                .hr {
+                    height: 1px;
+                    margin: @space;
+                    background-color: @border-gray;
+                }
+                p {
+                    margin: @space;
+                    font-size: @big;
+                    text-align: left;
+                    i {
+                        font-size: inherit;
+                        color: @orange;
+                        vertical-align: middle;
+                    }
+                }
+                &.active,
+                &:hover {
+                    border-color: @orange;
+                    box-shadow: @space / 3 @space / 3 @space / 2 lighten(@orange, 30%);
+                }
+            }
+        }
+    }
+}

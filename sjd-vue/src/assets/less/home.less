@@ -72,8 +72,27 @@
                 }
                 .center {
                     width: 80%;
+                    .count {
+                        color: @font-gray;
+                        float: right;
+                    }
                 }
             }
+        }
+    }
+    .footer {
+        position: relative;
+        .btn {
+            left: 50%;
+            bottom: @space / 3;
+            width: @size * 2.2;
+            height: @size * 2.2;
+            line-height: @size * 2;
+            margin: 0;
+            border: @space / 2 solid #fff;
+            border-radius: 50%;
+            position: absolute;
+            transform: translateX(-50%);
         }
     }
 }

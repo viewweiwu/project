@@ -126,7 +126,7 @@
             },
             onTypeClick() {
                 this.$router.push({
-                    name: 'select'
+                    name: 'car/select'
                 });
             },
             save() {

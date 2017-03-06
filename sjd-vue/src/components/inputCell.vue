@@ -2,13 +2,13 @@
     <li @click="onClick">
         <label>{{label}}</label>
         <template v-if="this.type != 'select'">
-            <input :placeholder="placeholder" type="text" v-model="value" @input="onInput" :maxlength="max" ref="input">
-            <i class="iconfont" @touchstart.prevent="onStart" @touchend.prevent="onEnd" v-if="type == 'password'">&#xe71e;</i>
+            <input :placeholder="tip" type="text" v-model="value" @input="onInput" :maxlength="max" ref="input">
+            <i class="iconfont big-font" @touchstart.prevent="onStart" @touchend.prevent="onEnd" v-if="type == 'password'">&#xe60d;</i>
             <i class="iconfont" @click.stop="onClearBtnClick" v-if="value != ''">&#xe641;</i>
         </template>
         <template v-if="this.type == 'select'">
             <div class="text" v-show="selected != ''">{{selected}}</div>
-            <div class="placeholder" v-show="selected == ''">{{placeholder}}</div>
+            <div class="placeholder" v-show="selected == ''">{{tip}}</div>
             <i class="iconfont">&#xe65f;</i>
         </template>
     </li>
@@ -16,7 +16,7 @@
 
 <script>
     export default {
-        props: ['label', 'type', 'max', 'selected'],
+        props: ['label', 'type', 'max', 'selected', 'placeholder'],
         data() {
             return {
                 value: ''
@@ -48,7 +48,10 @@
 
         },
         computed: {
-            placeholder() {
+            tip() {
+                if(this.placeholder) {
+                    return this.placeholder;
+                }
                 return "请" + (this.type == 'select' ? '选择' : '输入') + this.label;    
             }
         }

@@ -4,15 +4,19 @@
             <div class="left" @click="$router.go(-1)">
                 <i class="iconfont">&#xe660;</i>
             </div>
-            <div class="title">添加车型</div>
+            <div class="title">申请新增车型</div>
             <div class="right"></div>
         </header>
         <main>
+            <div class="tip">
+                <p>请准确填写您爱车的品牌和车型</p>
+                <p>以方便通过审核</p>
+            </div>
             <ul class="cell-list cell-input">
-                <input-cell label="品牌" type="text" @input="onBrandInput" max="20"></input-cell>
-                <input-cell label="型号" type="text" @input="onTypeInput" max="20"></input-cell>
+                <input-cell label="品牌" placeholder="例：大众" type="text" @input="onBrandInput" max="20"></input-cell>
+                <input-cell label="型号" placeholder="例：帕萨特" type="text" @input="onTypeInput" max="20"></input-cell>
             </ul>
-            <button class="btn" @click="onSubmitBtnClick">确定</button>
+            <button class="btn" @click="onSubmitBtnClick">提交申请</button>
         </main>
     </div>
 </template>
@@ -33,7 +37,7 @@
                 this.brand = value;
             },
             onTypeInput(value) {
-                this.type = type;
+                this.type = value;
             },
             onSubmitBtnClick() {
                 this.$router.go(-2);
@@ -43,4 +47,9 @@
 </script>
 <style lang="less">
     @import "../../assets/less/cell-input";
+    .tip {
+        margin: @space * 2;
+        color: @font-gray;
+        text-align: center;
+    }
 </style>

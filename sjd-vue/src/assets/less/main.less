@@ -1,9 +1,11 @@
 @import "var";
 @import "reset";
 @import "home";
-@import "car/select";
 @import "login/register";
 @import "trip/list";
+@import "trip/detail";
+@import "car/list";
+@import "car/select";
 
 html,
 body {
@@ -121,8 +123,14 @@ html {
         user-select: none;
         display: block;
     }
+    .big-font {
+        font-size: @big;
+    }
     .red-font {
         color: #f06;
+    }
+    .orange-font {
+        color: @orange;
     }
     >.footer {
         height: @size;

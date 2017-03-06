@@ -89,11 +89,11 @@ const routers = [{
         });
     }
 }, {
-    path: '/select',
-    name: 'select',
+    path: '/car/select',
+    name: 'car/select',
     component(resolve) {
-        require.ensure(['./views/select.vue'], () => {
-            resolve(require('./views/select.vue'));
+        require.ensure(['./views/car/select.vue'], () => {
+            resolve(require('./views/car/select.vue'));
         });
     }
 }, {
