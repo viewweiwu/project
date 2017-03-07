@@ -1,12 +1,6 @@
 <template>
     <div class="container">
-        <header class="header">
-            <div class="left" @click="$router.go(-1)">
-                <i class="iconfont">&#xe660;</i>
-            </div>
-            <div class="title">申请新增车型</div>
-            <div class="right"></div>
-        </header>
+        <page-header title="申请新增车型" leftArrow="true" @leftClick="$router.go(-1)"></page-header>
         <main>
             <div class="tip">
                 <p>请准确填写您爱车的品牌和车型</p>
@@ -22,9 +16,11 @@
 </template>
 <script>
     import inputCell from "../../components/inputCell.vue";
+    import pageHeader from "../../components/page-header.vue";
     export default {
         components: {
-            inputCell
+            inputCell,
+            pageHeader
         },
         data() {
             return {

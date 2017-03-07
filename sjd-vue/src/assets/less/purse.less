@@ -1,0 +1,23 @@
+.container.purse {
+    .cell-list {
+        margin: @space;
+        padding: 0;
+        border: 1px solid @border-gray;
+        border-radius: @space / 2;
+        box-shadow: @space / 3 @space / 3 @space / 2 @border-gray;
+        font-size: @big;
+        li {
+            padding: 0 @space;
+        }
+        i {
+            font-size: @x-big;
+            color: darken(@orange, 20%);
+            vertical-align: middle;
+        }
+        .count {
+            font-size: @xx-big * 1.2;
+            margin: 0 @space / 3 0 @space;
+            vertical-align: sub;
+        }
+    }
+}

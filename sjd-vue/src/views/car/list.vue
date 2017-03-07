@@ -1,12 +1,6 @@
 <template>
     <div class="container car-list">
-        <header class="header">
-            <div class="left" @click="$router.go(-1)">
-                <i class="iconfont">&#xe660;</i>
-            </div>
-            <div class="title">车辆列表</div>
-            <div class="right"></div>
-        </header>
+        <page-header title="车辆列表" leftArrow="true" @leftClick="$router.go(-1)"></page-header>
         <main class="main">
             <div class="card-list">
                 <div class="card">
@@ -28,7 +22,11 @@
 </template>
 
 <script>
+    import pageHeader from "../../components/page-header.vue";
     export default {
+        components: {
+            pageHeader
+        },
         methods: {
             onAddBtnClick() {
                 this.$router.push({

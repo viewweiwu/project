@@ -113,6 +113,22 @@ const routers = [{
         });
     }
 }, {
+    path: '/user/info',
+    name: 'user/info',
+    component(resolve) {
+        require.ensure(['./views/user/info.vue'], () => {
+            resolve(require('./views/user/info.vue'));
+        });
+    }
+}, {
+    path: '/user/report',
+    name: 'user/report',
+    component(resolve) {
+        require.ensure(['./views/user/report.vue'], () => {
+            resolve(require('./views/user/report.vue'));
+        });
+    }
+}, {
     path: '*',
     component: Home
 }];

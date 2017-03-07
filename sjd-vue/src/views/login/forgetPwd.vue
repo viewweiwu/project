@@ -1,12 +1,6 @@
 <template>
     <div class="container">
-        <header class="header">
-            <div class="left" @click="$router.go(-1)">
-                <i class="iconfont">&#xe660;</i>
-            </div>
-            <div class="title">验证身份</div>
-            <div class="right"></div>
-        </header>
+        <page-header title="验证身份" leftArrow="true" @leftClick="$router.go(-1)"></page-header>
         <main class="main">
             <ul class="cell-list cell-input">
                 <input-cell label="手机" type="text" @input="onTelInput" max="20"></input-cell>
@@ -19,9 +13,11 @@
 
 <script>
     import inputCell from "../../components/inputCell.vue";
+    import pageHeader from "../../components/page-header.vue";
     export default {
         components: {
-            inputCell
+            inputCell,
+            pageHeader
         },
         data() {
             return {

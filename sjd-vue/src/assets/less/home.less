@@ -2,6 +2,9 @@
     font-size: @big;
     .main {
         height: e('calc(100% - 2rem)');
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
         .user {
             color: #fff;
             background-color: @blue;
@@ -61,9 +64,6 @@
                 overflow: hidden;
                 span {
                     float: left;
-                    i {
-                        vertical-align: middle;
-                    }
                 }
                 .left,
                 .right {

@@ -1,0 +1,186 @@
+.container.user-report {
+    .main {
+        width: 100%;
+        height: e('calc(100% - 1rem)');
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        >.top {
+            padding: @size;
+            background-color: #282b44;
+            overflow: hidden;
+            text-align: center;
+            .tip {
+                font-size: @big;
+                color: @font-gray;
+            }
+            .average {
+                margin: @space 0;
+                font-size: @xx-big * 3;
+            }
+            .star {
+                margin: @space 0;
+                position: relative;
+                &:before {
+                    content: "";
+                    top: 50%;
+                    left: 0;
+                    width: 15%;
+                    height: 1px;
+                    background-color: @font-gray;
+                    position: absolute;
+                }
+                &:after {
+                    content: "";
+                    top: 50%;
+                    right: 0;
+                    width: 15%;
+                    height: 1px;
+                    background-color: @font-gray;
+                    position: absolute;
+                }
+                i {
+                    font-size: @xx-big;
+                    z-index: 1;
+                    position: relative;
+                }
+            }
+            .rank {
+                color: #fff;
+                overflow: hidden;
+                margin: @size 0;
+                .left {
+                    width: 50%;
+                    float: left;
+                }
+                .right {
+                    width: 50%;
+                    float: right;
+                }
+                .count {
+                    font-size: @xx-big;
+                }
+                .text {
+                    color: @font-gray;
+                }
+            }
+            .orange-font {
+                color: lighten(@orange, 10%);
+            }
+        }
+        >.center {
+            margin: -@size @space @space;
+            padding: @space @space * 2;
+            border: 1px solid @border-gray;
+            border-radius: @space;
+            background-color: #fff;
+            text-align: center;
+            .title {
+                margin: @space;
+                font-size: @x-big;
+                color: @orange;
+            }
+            .list {
+                overflow: hidden;
+                li {
+                    width: 50%;
+                    margin: @space 0 ;
+                    float: left;
+                    .rank {
+                        width: 80%;
+                        height: @space * 1.5;
+                        margin: @space / 2 auto;
+                        border: 1px solid @border-gray;
+                        border-radius: @space;
+                        background-color: #f6f6f6;
+                        overflow: hidden;
+                        .size {
+                            width: 20%;
+                            height: 100%;
+                            background-color: @orange;
+                        }
+                        &.gray {
+                            .size {
+                                background-color: @font-gray;
+                            }
+                        }
+                    }
+                }
+            }
+            .instr {
+                margin: @space 0;
+                overflow: hidden;
+                .left {
+                    width: 50%;
+                    float: left;
+                }
+                .right {
+                    width: 50%;
+                    float: right;
+                }
+                .rank {
+                    width: @size / 2;
+                    height: @space * 1.5;
+                    border-radius: @space;
+                    background-color: @orange;
+                    display: inline-block;
+                    vertical-align: middle;
+                    &.gray {
+                        background-color: @font-gray;
+                    }
+                }
+            }
+        }
+        >.bottom {
+            margin: @space;
+            padding: @space @space * 3;
+            border: 1px solid @border-gray;
+            border-radius: @space;
+            background-color: #fff;
+            text-align: center;
+            h2 {
+                margin: @space * 2 0;
+                font-size: @big;
+                font-weight: lighter;
+            }
+            .list {
+                li {
+                    margin: @space 0;
+                    overflow: hidden;
+                    .rank { 
+                        width: 70%;
+                        height: @space * 2;
+                        line-height: @space * 1.8;
+                        padding: 0 @space;
+                        border: 1px solid @border-gray;
+                        border-radius: @space;
+                        background-color: #f6f6f6;
+                        overflow: hidden;
+                        position: relative;
+                        text-align: left;
+                        float: left;
+                        i {
+                            font-size: @small;
+                            z-index: 1;
+                            position: relative;
+                        }
+                        .size {
+                            top: 0;
+                            left: 0;
+                            width: 20%;
+                            height: 100%;
+                            border-radius: @space;
+                            background-color: lighten(@font-gray, 30%);
+                            position: absolute;
+                        }
+                    }
+                    .text {
+                        float: right;
+                        text-align: right;
+                    }
+                }
+            }
+        }
+
+    }
+}

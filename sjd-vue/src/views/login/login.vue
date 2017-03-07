@@ -1,10 +1,6 @@
 <template>
     <div class="container login">
-        <header class="header">
-            <div class="left"></div>
-            <div class="title">登陆</div>
-            <div class="right"></div>
-        </header>
+        <page-header title="登陆"></page-header>
         <main class="main">
             <ul class="cell-list cell-input">
                 <input-cell label="登录名" type="text" @input="onUsernameInput" max="20"></input-cell>
@@ -21,9 +17,11 @@
 
 <script>
     import inputCell from "../../components/inputCell.vue";
+    import pageHeader from "../../components/page-header.vue";
     export default {
         components: {
-            inputCell
+            inputCell,
+            pageHeader
         },
         data() {
             return {

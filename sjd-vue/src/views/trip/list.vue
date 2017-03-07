@@ -1,12 +1,6 @@
 <template>
     <div class="container trip-list">
-        <header class="header">
-            <div class="left" @click="$router.go(-1)">
-                <i class="iconfont">&#xe660;</i>
-            </div>
-            <div class="title">行程列表</div>
-            <div class="right"></div>
-        </header>
+        <page-header title="行程列表" leftArrow="true" @leftClick="$router.go(-1)"></page-header>
         <main class="main">
             <div class="card-list">
                 <h3>02月13日</h3>
@@ -28,7 +22,11 @@
     </div>
 </template>
 <script>
+    import pageHeader from "../../components/page-header.vue";
     export default {
+        components: {
+            pageHeader
+        },
         data() {
             return {
 

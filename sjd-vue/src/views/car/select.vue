@@ -1,14 +1,6 @@
 <template>
     <div class="container car-select">
-        <header class="header">
-            <div class="left" @click="$router.go(-1)">
-                <i class="iconfont">&#xe660;</i>
-            </div>
-            <div class="title">{{selectText.content + " " + selectText.parent + " " + selectText.child}}</div>
-            <div class="right" @click="onAddTypeBtnClick">
-                添加车型
-            </div>
-        </header>
+        <page-header title="个人信息" leftArrow="true" @leftClick="$router.go(-1)" right="添加车型" @rightClick="onAddTypeBtnClick"></page-header>
         <main class="main">
             <aside :class="['type-select',{full: isMove}]" ref="right" >
                 <ul>
@@ -44,8 +36,12 @@
 
 <script>
     import $ from 'jquery';
+    import pageHeader from "../../components/page-header.vue";
 
     export default {
+        components: {
+            pageHeader
+        },
         data() {
             return {
                 typeList: [],

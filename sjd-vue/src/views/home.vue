@@ -1,17 +1,13 @@
 <template>
     <div class="container home">
-        <header class="header">
-            <div class="left"></div>
-            <div class="title">首页</div>
-            <div class="right"></div>
-        </header>
+        <page-header title="首页"></page-header>
         <main class="main">
             <div class="user">
-                <div class="info">
+                <div class="info" @click="onInfoClick">
                     <span class="face"><i class="iconfont">&#xe602;</i></span>
                     <span class="name">司机名字</span>
                 </div>
-                <div class="report">
+                <div class="report" @click="onReportClick">
                     <div>
                         <p class="score">80</p>
                         <p class="text">服务分</p>
@@ -60,8 +56,22 @@
 </template>
 
 <script>
+    import pageHeader from "../components/page-header.vue";
     export default {
+        components: {
+            pageHeader
+        },
         methods: {
+            onInfoClick() {
+                this.$router.push({
+                    name: 'user/info'
+                });
+            },
+            onReportClick() {
+                this.$router.push({
+                    name: 'user/report'
+                });
+            },
             onTripClick() {
                 this.$router.push({
                     name: 'trip/list'

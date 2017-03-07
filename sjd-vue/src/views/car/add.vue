@@ -1,12 +1,6 @@
 <template>
     <div class="container register">
-        <header class="header">
-            <div class="left" @click="$router.go(-1)">
-                <i class="iconfont">&#xe660;</i>
-            </div>
-            <div class="title">我的车辆</div>
-            <div class="right"></div>
-        </header>
+        <page-header title="我的车辆" leftArrow="true" @leftClick="$router.go(-1)"></page-header>
         <mt-datetime-picker ref="registerDatePicker" type="date" v-model="registerDate" @confirm="onRegisterDateConfirm"></mt-datetime-picker>
         <main class="main">
             <p class="cell-title orange-font">请准确填写车辆信息，以方便通过审核</p>
@@ -43,9 +37,11 @@
 
 <script>
     import inputCell from "../../components/inputCell.vue";
+    import pageHeader from "../../components/page-header.vue";
     export default {
         components: {
-            inputCell
+            inputCell,
+            pageHeader
         },
         data() {
             return {

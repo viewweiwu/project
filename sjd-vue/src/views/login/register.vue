@@ -1,12 +1,6 @@
 <template>
     <div class="container register">
-        <header class="header">
-            <div class="left" @click="$router.go(-1)">
-                <i class="iconfont">&#xe660;</i>
-            </div>
-            <div class="title">注册</div>
-            <div class="right"></div>
-        </header>
+        <page-header title="注册" leftArrow="true" @leftClick="$router.go(-1)"></page-header>
         <mt-datetime-picker ref="registerDatePicker" type="date" v-model="registerDate" @confirm="onRegisterDateConfirm"></mt-datetime-picker>
         <mt-datetime-picker ref="firstGetDatePicker" type="date" v-model="firstGetDate" @confirm="onFirstGetDateConfirm"></mt-datetime-picker>
         <main class="main">
@@ -50,9 +44,11 @@
 
 <script>
     import inputCell from "../../components/inputCell.vue";
+    import pageHeader from "../../components/page-header.vue";
     export default {
         components: {
-            inputCell
+            inputCell,
+            pageHeader
         },
         data() {
             return {
