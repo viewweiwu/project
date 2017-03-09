@@ -7,6 +7,7 @@
 @import "trip/detail";
 @import "trip/map";
 @import "car/list";
+@import "car/detail";
 @import "car/select";
 @import "user/info";
 @import "user/report";
@@ -94,6 +95,18 @@ html {
             cursor: pointer;
         }
     }
+    >.footer {
+        height: @size;
+        line-height: @size;
+        border-top: 1px solid #eee;
+        background-color: #fff;
+        text-align: center;
+        .btn {
+            height: 80%;
+            margin: 0 auto;
+            display: inline-block;
+        }
+    }
     .cell-title {
         margin: @space;
         color: @font-gray;
@@ -114,6 +127,19 @@ html {
             }
         }
     }
+    .loading {
+        margin: @space 0;
+        color: @font-gray;
+        text-align: center;
+    }
+    .empty-data {
+        margin: @space 0;
+        text-align: center;
+        color: @font-gray;
+        i {
+            font-size: @xx-big * 3;
+        }
+    }
     .btn {
         width: 95%;
         height: 1rem - @space;
@@ -130,22 +156,22 @@ html {
     .big-font {
         font-size: @big;
     }
+    .xbig-font {
+        font-size: @x-big;
+    }
+    .xxbig-font {
+        font-size: @xx-big;
+    }
+    .gray-font {
+        color: @font-gray;
+    }
     .red-font {
         color: red;
     }
     .orange-font {
         color: @orange;
     }
-    >.footer {
-        height: @size;
-        line-height: @size;
-        border-top: 1px solid #eee;
-        background-color: #fff;
-        text-align: center;
-        .btn {
-            height: 80%;
-            margin: 0 auto;
-            display: inline-block;
-        }
+    .green-font {
+        color: limegreen;
     }
 }

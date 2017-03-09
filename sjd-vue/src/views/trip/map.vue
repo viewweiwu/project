@@ -59,7 +59,6 @@
                 });
                 this.map = map;
                 this.loadCurrPosition();
-                console.log(driving);
             },
             loadCurrPosition() {
                 let map = this.map;

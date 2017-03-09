@@ -1,0 +1,50 @@
+.container.car-detail {
+    .main {
+        width: 100%;
+        height: e('calc(100% - 2rem)');
+        font-size: @big;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        .card {
+            margin: @space;
+            border: 1px solid @border-gray;
+            border-radius: @space / 2;
+            padding: @size / 2 @space * 2;
+            background-color: #fff;
+            box-shadow: @space / 3 @space / 3 @space / 2 @border-gray;
+            overflow: hidden;
+            text-align: center;
+            i {
+                font-size: @xx-big * 3;
+            }
+            .hr {
+                height: 1px;
+                margin: @space * 2;
+                border-bottom: 1px dashed @border-gray;
+            }
+            .list {
+                width: 100%;
+                margin-top: @space * 2;
+                overflow: hidden;
+                div {
+                    margin: @space / 2 0;
+                    overflow: hidden;
+                    .label {
+                        float: left;
+                    }
+                    .text {
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+    .footer {
+        .btn {
+            border: 1px solid red;
+            color: red;
+            background-color: #fff;
+        }
+    }
+}

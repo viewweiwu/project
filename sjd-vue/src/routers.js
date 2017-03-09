@@ -89,6 +89,14 @@ const routers = [{
         });
     }
 }, {
+    path: '/car/detail',
+    name: 'car/detail',
+    component(resolve) {
+        require.ensure(['./views/car/detail.vue'], () => {
+            resolve(require('./views/car/detail.vue'));
+        });
+    }
+}, {
     path: '/car/select',
     name: 'car/select',
     component(resolve) {

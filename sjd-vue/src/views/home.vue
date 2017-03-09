@@ -49,18 +49,30 @@
             
         </main>
         <footer class="footer">
-            <div class="btn">开始听单</div>
+            <div :class="['btn', {open: isOpen}]" @click="onBtnClick">
+                <div class="range"></div>
+                <div class="text">{{isOpen | toText}}</div>
+            </div>
         </footer>
     </div>
 </template>
 
 <script>
     import pageHeader from "../components/page-header.vue";
+    import { MessageBox } from 'mint-ui';
     export default {
         components: {
-            pageHeader
+            pageHeader 
+        },
+        data() {
+            return {
+                isOpen: false
+            }
         },
         methods: {
+            onBtnClick() {
+                this.isOpen = !this.isOpen;
+            },
             onInfoClick() {
                 this.$router.push({
                     name: 'user/info'
@@ -92,14 +104,25 @@
                 });
             },
             onLoginOutClick() {
-                this.$router.push({
-                    name: 'login/login'
-                });
+                MessageBox.confirm("确定要退出登录？").then(() => {
+                    this.$router.push({
+                        name: 'login/login'
+                    });
+                }, () => {});
             },
             onRegisterClick() {
                 this.$router.push({
                     name: 'login/register'
                 });
+            }
+        },
+        filters: {
+            toText(value) {
+                if(value) {
+                    return "听单中"
+                } else {
+                    return "开始听单"
+                }
             }
         }
     }

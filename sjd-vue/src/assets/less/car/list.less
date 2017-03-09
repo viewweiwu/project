@@ -15,36 +15,26 @@
                 border-radius: @space / 2;
                 box-shadow: @space / 3 @space / 3 @space / 2 @border-gray;
                 text-align: center;
-                h2 {
-                    font-size: @x-big;
-                    font-weight: lighter;
-                }
-                h3 {
-                    font-size: @normal;
-                    font-weight: lighter;
-                    color: @font-gray;
-                }
                 img {
                     width: 50%;
                     margin: @space 0;
+                }
+                p {
+                    i {
+                        font-size: inherit;
+                        vertical-align: middle;
+                    }
                 }
                 .hr {
                     height: 1px;
                     margin: @space;
                     background-color: @border-gray;
                 }
-                p {
+                .left-font {
                     margin: @space;
-                    font-size: @big;
                     text-align: left;
-                    i {
-                        font-size: inherit;
-                        color: @orange;
-                        vertical-align: middle;
-                    }
                 }
-                &.active,
-                &:hover {
+                &.active {
                     border-color: @orange;
                     box-shadow: @space / 3 @space / 3 @space / 2 lighten(@orange, 30%);
                 }

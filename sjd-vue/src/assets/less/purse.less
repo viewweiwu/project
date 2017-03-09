@@ -1,23 +1,28 @@
 .container.purse {
-    .cell-list {
+    .card {
         margin: @space;
-        padding: 0;
         border: 1px solid @border-gray;
         border-radius: @space / 2;
+        padding: @size;
+        background-color: #fff;
         box-shadow: @space / 3 @space / 3 @space / 2 @border-gray;
-        font-size: @big;
-        li {
-            padding: 0 @space;
+        overflow: hidden;
+        text-align: center;
+        &.card1 {
+            background-color: #fefff0;
         }
-        i {
-            font-size: @x-big;
-            color: darken(@orange, 20%);
-            vertical-align: middle;
+        &.card2 {
+            background-color: #f5fcff;
         }
         .count {
-            font-size: @xx-big * 1.2;
-            margin: 0 @space / 3 0 @space;
-            vertical-align: sub;
+            font-size: @xx-big * 2;
+        }
+        .type {
+            font-size: @big;
+            i {
+                margin-right: @space / 2;
+                vertical-align: middle;
+            }
         }
     }
 }
