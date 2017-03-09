@@ -30,6 +30,9 @@
                 </div>
             </div>
         </main>
+        <footer class="footer">
+            <button class="btn" @click="onMapClick">开始导航</button>
+        </footer>
     </div>
 </template>
 <script>
@@ -44,9 +47,11 @@
             }
         },
         methods: {
-            onCardClick() {
-                
-            }
+            onMapClick() {
+                this.$router.push({
+                    name: "trip/map"
+                })
+            },
         }
     }
 </script>

@@ -7,6 +7,7 @@ import rem from './rem.js';
 import Mint from 'mint-ui';
 
 import 'mint-ui/lib/style.css';
+import './assets/less/iconfont/iconfont.css';
 import './assets/less/main.less';
 
 Vue.use(VueRouter);

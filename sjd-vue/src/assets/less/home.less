@@ -1,13 +1,17 @@
 .container.home {
     font-size: @big;
+    .header {
+        background-color: @dark-blue;
+    }
     .main {
-        height: e('calc(100% - 2rem)');
+        height: e('calc(100% - 1rem)');
         overflow-x: hidden;
         overflow-y: auto;
         position: relative;
         .user {
             color: #fff;
-            background-color: @blue;
+            background-color: @dark-blue;
+            overflow: hidden;
             .info {
                 height:  @size * 1.5;
                 line-height: @size * 1.5;
@@ -23,35 +27,44 @@
                 }
             }
             .report {
-                height:  @size * 1.5;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-bottom: 1px solid @border-gray;
-                div {
-                    width: 50%;
-                    float: left;
+                margin-bottom: @space;
+                padding: 0 @size;
+                overflow: hidden;
+                .average {
+                    margin-bottom: @space;
+                    font-size: @xx-big * 3;
+                    text-align: center;
+                }
+                .star {
+                    margin: @space 0;
                     position: relative;
-                    &:first-child {
-                        &:after {
-                            content: "";
-                            top: 15%;
-                            right: 0;
-                            width: 1px;
-                            height: 70%;
-                            background-color: #fff;
-                            position: absolute;
-                        }
+                    text-align: center;
+                    &:before {
+                        content: "";
+                        top: 50%;
+                        left: 0;
+                        width: 15%;
+                        height: 1px;
+                        background-color: @font-gray;
+                        position: absolute;
                     }
-                    p {
-                        text-align: center;
-                        &.score {
-                            font-size: @xx-big;
-                        }
-                        &.text {
-                            font-size: @normal;
-                        }
+                    &:after {
+                        content: "";
+                        top: 50%;
+                        right: 0;
+                        width: 15%;
+                        height: 1px;
+                        background-color: @font-gray;
+                        position: absolute;
                     }
+                    i {
+                        font-size: @xx-big;
+                        z-index: 1;
+                        position: relative;
+                    }
+                }
+                .orange-font {
+                    color: lighten(@orange, 10%);
                 }
             }
         }

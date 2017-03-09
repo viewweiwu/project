@@ -1,6 +1,5 @@
 <template>
     <div class="container home">
-        <page-header title="首页"></page-header>
         <main class="main">
             <div class="user">
                 <div class="info" @click="onInfoClick">
@@ -8,13 +7,13 @@
                     <span class="name">司机名字</span>
                 </div>
                 <div class="report" @click="onReportClick">
-                    <div>
-                        <p class="score">80</p>
-                        <p class="text">服务分</p>
-                    </div>
-                    <div>
-                        <p class="score">4.94</p>
-                        <p class="text">评价星级</p>
+                    <div class="average orange-font">4.95</div>
+                    <div class="star orange-font">
+                        <i class="iconfont big-font">&#xe603;</i>
+                        <i class="iconfont big-font">&#xe603;</i>
+                        <i class="iconfont big-font">&#xe603;</i>
+                        <i class="iconfont big-font">&#xe603;</i>
+                        <i class="iconfont big-font">&#xe603;</i>
                     </div>
                 </div>
             </div>

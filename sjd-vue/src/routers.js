@@ -113,6 +113,14 @@ const routers = [{
         });
     }
 }, {
+    path: '/trip/map',
+    name: 'trip/map',
+    component(resolve) {
+        require.ensure(['./views/trip/map.vue'], () => {
+            resolve(require('./views/trip/map.vue'));
+        });
+    }
+}, {
     path: '/user/info',
     name: 'user/info',
     component(resolve) {
