@@ -3,7 +3,7 @@
         <page-header title="服务评价" leftArrow="true" @leftClick="$router.go(-1)"></page-header>
         <main class="main">
             <div class="top">
-                <p class="tip">近100单服务评价平均星级</p>
+                <p class="tip">近期服务评价平均星级</p>
                 <div class="average orange-font">4.95</div>
                 <div class="star orange-font">
                     <i class="iconfont big-font">&#xe603;</i>

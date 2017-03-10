@@ -20,7 +20,7 @@
             <ul class="cell-list">
                 <li @click="onTripClick">
                     <span class="left"><i class="iconfont big-font">&#xe8a1;</i></span>
-                    <span class="center">我的行程<span class="count">23</span></span>
+                    <span class="center">我的行程</span>
                     <span class="right"><i class="iconfont">&#xe65f;</i></span>
                 </li>
                 <li @click="onPurseClick">
