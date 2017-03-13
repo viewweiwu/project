@@ -7,14 +7,8 @@
                     <span class="name">司机名字</span>
                 </div>
                 <div class="report" @click="onReportClick">
-                    <div class="average orange-font">4.95</div>
-                    <div class="star orange-font">
-                        <i class="iconfont big-font">&#xe603;</i>
-                        <i class="iconfont big-font">&#xe603;</i>
-                        <i class="iconfont big-font">&#xe603;</i>
-                        <i class="iconfont big-font">&#xe603;</i>
-                        <i class="iconfont big-font">&#xe603;</i>
-                    </div>
+                    <div class="average orange-font">{{score | count}}</div>
+                    <star :score="score"></star>
                 </div>
             </div>
             <ul class="cell-list">
@@ -59,14 +53,17 @@
 
 <script>
     import pageHeader from "../components/page-header.vue";
+    import star from "../components/star.vue";
     import { MessageBox } from 'mint-ui';
     export default {
         components: {
-            pageHeader 
+            pageHeader,
+            star
         },
         data() {
             return {
-                isOpen: false
+                isOpen: false,
+                score: 4.5
             }
         },
         methods: {
@@ -123,6 +120,9 @@
                 } else {
                     return "开始听单"
                 }
+            },
+            count(value) {
+                return value.toFixed(2);
             }
         }
     }

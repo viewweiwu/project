@@ -4,14 +4,8 @@
         <main class="main">
             <div class="top">
                 <p class="tip">近期服务评价平均星级</p>
-                <div class="average orange-font">4.95</div>
-                <div class="star orange-font">
-                    <i class="iconfont big-font">&#xe603;</i>
-                    <i class="iconfont big-font">&#xe603;</i>
-                    <i class="iconfont big-font">&#xe603;</i>
-                    <i class="iconfont big-font">&#xe603;</i>
-                    <i class="iconfont big-font">&#xe603;</i>
-                </div>
+                <div class="average orange-font">{{score | count}}</div>
+                <star :score="score"></star>
                 <div class="rank">
                     <div class="left">
                         <p class="count">5.00</p>
@@ -132,9 +126,21 @@
 </template>
 <script>
     import pageHeader from "../../components/page-header.vue";
+    import star from "../../components/star.vue";
     export default {
         components: {
-            pageHeader
+            pageHeader,
+            star
+        },
+        data() {
+            return {
+                score: 3.6
+            }
+        },
+        filters: {
+            count(value) {
+                return value.toFixed(2);
+            }
         }
     }
 </script>

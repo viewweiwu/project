@@ -30,6 +30,14 @@
                 password: ""
             }
         },
+        mounted() {
+            let username = Cookies.get('username');
+            if(username) {
+                this.$router.replace({
+                    name: 'home'
+                })
+            }
+        },
         methods: {
             onUsernameInput(value) {
                 this.username = value;

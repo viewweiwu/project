@@ -24,6 +24,8 @@
             .star {
                 margin: @space 0;
                 position: relative;
+                display: flex;
+                justify-content: center;
                 &:before {
                     content: "";
                     top: 50%;
@@ -46,6 +48,9 @@
                     font-size: @xx-big;
                     z-index: 1;
                     position: relative;
+                    &.half {
+                        transform: translateY(8%) scale(0.95);
+                    }
                 }
             }
             .rank {

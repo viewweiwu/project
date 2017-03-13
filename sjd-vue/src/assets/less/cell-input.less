@@ -1,59 +1,58 @@
 @import "var";
 .cell-list.cell-input {
-        margin: @space 0;
-        padding-left: 0;
-        li {
+    margin: @space 0;
+    padding-left: 0;
+    li {
+        border: none;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        label {
+            margin: 0 @space;
+        }
+        .text {
+            flex: 1;
             border: none;
-            position: relative;
-            overflow: hidden;
+        }
+        .placeholder {
+            flex: 1;
+            color: @placeholder-color;
+        }
+        .plate {
+            flex: 1;
             display: flex;
-            label {
-                margin: 0 @space;
-            }
-            .text {
-                flex: 1;
-                border: none;
-            }
-            .placeholder {
-                flex: 1;
-                color: @placeholder-color;
-            }
-            .plate {
-                flex: 1;
-                display: flex;
-                align-items: center;
-                .plate-select {
-                    width: @size - @space * 2;
-                    height: @size - @space * 2; 
-                    line-height: @size - @space * 2; 
-                    margin-right: @space / 2;
-                    border: 1px solid @orange;
-                    border-radius: 2px;
-                    background-color: #fff;
-                    text-align: center;
-                    position: relative;
-                    &:after {
-                        content: "";
-                        right: 1px;
-                        bottom: 1px;
-                        border-left: @space / 2 solid transparent;
-                        border-top: @space/ 2 solid transparent;
-                        border-right: @space / 2 solid @orange;
-                        border-bottom: @space / 2 solid @orange;
-                        position: absolute;
-                    }
+            align-items: center;
+            .plate-select {
+                width: @size - @space * 2;
+                height: @size - @space * 2; 
+                line-height: @size - @space * 2; 
+                margin-right: @space / 2;
+                border: 1px solid @orange;
+                border-radius: 2px;
+                background-color: #fff;
+                text-align: center;
+                position: relative;
+                &:after {
+                    content: "";
+                    right: 1px;
+                    bottom: 1px;
+                    border-left: @space / 2 solid transparent;
+                    border-top: @space/ 2 solid transparent;
+                    border-right: @space / 2 solid @orange;
+                    border-bottom: @space / 2 solid @orange;
+                    position: absolute;
                 }
             }
-            .iconfont {
-                padding: 0 @space;
-            }
-            input {
-                flex: 1;
-                height: 100%;
-                padding-right: @space;
-                border: none;
-                font-size: inherit;
-            }
         }
-        
+        .iconfont {
+            padding: 0 @space;
+        }
+        input {
+            flex: 1;
+            height: 100%;
+            padding-right: @space;
+            border: none;
+            font-size: inherit;
+        }
+    }
 }
