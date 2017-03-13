@@ -5,6 +5,7 @@ import VueRouter from 'vue-router';
 import routes from './routers.js';
 import rem from './rem.js';
 import Mint from 'mint-ui';
+import * as Cookies from 'es-cookie';
 
 import 'mint-ui/lib/style.css';
 import './assets/font/iconfont.css';
@@ -20,6 +21,34 @@ const router = new VueRouter({
     mode: 'hash',
     routes
 });
+
+router.beforeEach((to, from, next) => {
+    let list = [
+        "car/add",
+        "car/detail",
+        "car/list",
+        "trip/detail",
+        "trip/list",
+        "trip/map",
+        "trip/detail",
+        "user/info",
+        "user/report",
+        "home",
+        "resetPwd",
+        "purse",
+    ];
+    if (list.indexOf(to.name) >= 0) {
+        // 校验 cookie
+        let name = Cookies.get('username');
+        if (name) {
+            next();
+        } else {
+            next({ name: 'login/login' });
+        }
+    } else {
+        next();
+    }
+})
 
 const app = new Vue({
     router

@@ -3,6 +3,11 @@ const Home = resolve => {
         resolve(require('./views/home.vue'));
     });
 };
+const Login = resolve => {
+    require.ensure(['./views/login/login.vue'], () => {
+        resolve(require('./views/login/login.vue'));
+    });
+};
 
 const routers = [{
     path: '/home',
@@ -27,11 +32,7 @@ const routers = [{
 }, {
     path: '/login/login',
     name: 'login/login',
-    component(resolve) {
-        require.ensure(['./views/login/login.vue'], () => {
-            resolve(require('./views/login/login.vue'));
-        });
-    }
+    component: Login
 }, {
     path: '/login/forgetPwd',
     name: 'login/forgetPwd',
@@ -146,7 +147,7 @@ const routers = [{
     }
 }, {
     path: '*',
-    component: Home
+    component: Login
 }];
 
 export default routers;

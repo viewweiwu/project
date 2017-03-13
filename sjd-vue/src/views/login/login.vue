@@ -18,6 +18,7 @@
 <script>
     import inputCell from "../../components/inputCell.vue";
     import pageHeader from "../../components/page-header.vue";
+    import * as Cookies from 'es-cookie';
     export default {
         components: {
             inputCell,
@@ -37,6 +38,7 @@
                 this.password = value;
             },
             onLoginBtnClick() {
+                Cookies.set("username", "view", {expires: 7});
                 this.$router.push({
                     name: "home"
                 })
