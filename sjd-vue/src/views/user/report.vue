@@ -24,39 +24,23 @@
                 </div>
                 <ul class="list">
                     <li>
-                        <div class="rank">
-                            <div class="size"></div>
-                        </div>
-                        <div class="rank gray">
-                            <div class="size"></div>
-                        </div>
+                        <rank size="30"></rank>
+                        <rank size="100" class="gray"></rank>
                         <div class="text">老司机就是稳！</div>
                     </li>
                     <li>
-                        <div class="rank">
-                            <div class="size"></div>
-                        </div>
-                        <div class="rank gray">
-                            <div class="size"></div>
-                        </div>
+                        <rank size="30"></rank>
+                        <rank size="100" class="gray"></rank>
                         <div class="text">老司机就是稳！</div>
                     </li>
                     <li>
-                        <div class="rank">
-                            <div class="size"></div>
-                        </div>
-                        <div class="rank gray">
-                            <div class="size"></div>
-                        </div>
+                        <rank size="30"></rank>
+                        <rank size="100" class="gray"></rank>
                         <div class="text">老司机就是稳！</div>
                     </li>
                     <li>
-                        <div class="rank">
-                            <div class="size"></div>
-                        </div>
-                        <div class="rank gray">
-                            <div class="size"></div>
-                        </div>
+                        <rank size="30"></rank>
+                        <rank size="100" class="gray"></rank>
                         <div class="text">老司机就是稳！</div>
                     </li>
                 </ul>
@@ -75,48 +59,23 @@
                 <h2>您累计的评论星级</h2>
                 <ul class="list">
                     <li>
-                        <div class="rank">
-                            <i class="iconfont">&#xe603;</i>
-                            <i class="iconfont">&#xe603;</i>
-                            <i class="iconfont">&#xe603;</i>
-                            <i class="iconfont">&#xe603;</i>
-                            <i class="iconfont">&#xe603;</i>
-                            <div class="size"></div>
-                        </div>
+                        <rank :starCount="5" :size="90"></rank>
                         <div class="text orange-font">50单</div>
                     </li>
                     <li>
-                        <div class="rank">
-                            <i class="iconfont">&#xe603;</i>
-                            <i class="iconfont">&#xe603;</i>
-                            <i class="iconfont">&#xe603;</i>
-                            <i class="iconfont">&#xe603;</i>
-                            <div class="size"></div>
-                        </div>
+                        <rank :starCount="4" :size="80"></rank>
                         <div class="text orange-font">5单</div>
                     </li>
                     <li>
-                        <div class="rank">
-                            <i class="iconfont">&#xe603;</i>
-                            <i class="iconfont">&#xe603;</i>
-                            <i class="iconfont">&#xe603;</i>
-                            <div class="size"></div>
-                        </div>
+                        <rank :starCount="3"></rank>
                         <div class="text orange-font">0单</div>
                     </li>
                     <li>
-                        <div class="rank">
-                            <i class="iconfont">&#xe603;</i>
-                            <i class="iconfont">&#xe603;</i>
-                            <div class="size"></div>
-                        </div>
+                        <rank :starCount="2"></rank>
                         <div class="text orange-font">0单</div>
                     </li>
                     <li>
-                        <div class="rank">
-                            <i class="iconfont">&#xe603;</i>
-                            <div class="size"></div>
-                        </div>
+                        <rank :starCount="1"></rank>
                         <div class="text orange-font">0单</div>
                     </li>
                 </ul>
@@ -127,10 +86,12 @@
 <script>
     import pageHeader from "../../components/page-header.vue";
     import star from "../../components/star.vue";
+    import rank from "../../components/rank.vue";
     export default {
         components: {
             pageHeader,
-            star
+            star,
+            rank
         },
         data() {
             return {

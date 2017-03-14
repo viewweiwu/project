@@ -54,6 +54,7 @@
 <script>
     import pageHeader from "../components/page-header.vue";
     import star from "../components/star.vue";
+    import * as Cookies from 'es-cookie';
     import { MessageBox } from 'mint-ui';
     export default {
         components: {
@@ -105,6 +106,7 @@
                     this.$router.push({
                         name: 'login/login'
                     });
+                    Cookies.remove("username");
                 }, () => {});
             },
             onRegisterClick() {
