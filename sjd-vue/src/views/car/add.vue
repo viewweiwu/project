@@ -5,7 +5,7 @@
         <main class="main">
             <p class="cell-title orange-font">请准确填写车辆信息，以方便通过审核</p>
             <ul class="cell-list cell-input">
-                <input-cell label="城市" type="select" :selected="city" @click="cityOpen = true"></input-cell>
+                <input-cell label="城市" type="select" :selected="city.cityName" @click="cityOpen = true"></input-cell>
                 <li>
                     <label>车牌号</label>
                     <div class="plate">
@@ -20,7 +20,7 @@
             </ul>
             <div :class="['right-page', {open: cityOpen}]">
                 <ul class="cell-list">
-                    <li v-for="item in cityData" @click="onCitySelect(item)">{{item}}</li>
+                    <li v-for="item in cityData" @click="onCitySelect(item)">{{item.cityName}}</li>
                 </ul>
             </div>
             <div :class="['right-page', {open: plateOpen}]">
@@ -30,7 +30,7 @@
             </div>
         </main>
         <footer class="footer">
-            <button class="btn">提交</button>
+            <button class="btn" @click="postData">提交</button>
         </footer>
     </div>
 </template>
@@ -38,6 +38,7 @@
 <script>
     import inputCell from "../../components/inputCell.vue";
     import pageHeader from "../../components/page-header.vue";
+    import { ajaxGet, formatDate } from "../../util.js";
     export default {
         components: {
             inputCell,
@@ -60,16 +61,21 @@
         },
         mounted() {;
             let selectTypeData = JSON.parse(sessionStorage.getItem("selectTypeData"));
-            this.setData()
-            this.cityData = ["北京", "上海", "浙江", "钓鱼岛"];
-            this.plateData = ["浙", "京"];
+            this.setData();
+            this.plateData = ["辽", "闽", "津", "蒙", "鄂", "苏", "渝", "黑", "宁", "川", "冀", "赣", "云", "陕", "新", "琼", "皖", "鲁", "晋", "湘", "桂", "藏", "吉", "沪", "青", "贵", "豫", "京", "粤", "浙", "甘"];
             if(selectTypeData) {
                 this.selectTypeData = selectTypeData;
                 sessionStorage.removeItem("selectTypeData");
             }
+            this.getCityData();
             this.save();
         },
         methods: {
+            getCityData() {
+                ajaxGet("common/city").then(data => {
+                    this.cityData = data.content;
+                })
+            },
             onPlateInput() {
                 this.plateLast = this.plateLast.toUpperCase();
                 this.save();
@@ -130,18 +136,20 @@
                 if(obj['registerDateText']) {
                     this.registerDateText = new Date(obj['registerDateText']);
                 }
-            }
-        },
-        computed: {
-            type() {
-                if(!this.selectTypeData['content']) {
-                    return "";
+            },
+            postData() {
+                let postData = {
+                    no: this.plateFirst + this.plateLast,
+                    color: this.selectTypeData.child,
+                    regDate: formatDate(this.registerDateText),
+                    seats: 4,
+                    isDefault: true,
+                    series_id: this.selectTypeData.parentId,
+                    model_id: this.selectTypeData.contentId
                 }
-                return this.selectTypeData['content'] + " " + this.selectTypeData['parent'] + " " + this.selectTypeData['child'];
-            }
-        },
-        filters: {
-            date(value) {
+                console.log(postData);
+            },
+            formatData(value) {
                 if(value === "") return "";
                 let result = "";
                 let year = value.getFullYear();
@@ -157,6 +165,19 @@
 
                 result = year + " - " + month + " - " + day;
                 return result;
+            }
+        },
+        computed: {
+            type() {
+                if(!this.selectTypeData['content']) {
+                    return "";
+                }
+                return this.selectTypeData['content'] + " " + this.selectTypeData['parent'] + " " + this.selectTypeData['child'];
+            }
+        },
+        filters: {
+            date(value) {
+                return formatDate(value);
             }
         }
     }

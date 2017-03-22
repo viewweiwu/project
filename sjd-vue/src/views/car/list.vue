@@ -3,16 +3,16 @@
         <page-header title="车辆列表" leftArrow="true" @leftClick="$router.go(-1)"></page-header>
         <main class="main">
             <div class="card-list">
-                <div class="card" v-for="(item, index) in list" @click="onCardClick">
-                    <h3 class="xbig-font">{{item.name}}({{item.color}})</h3>
-                    <p class="gray-font big-font">{{item.plate}}</p>
+                <div class="card" v-for="(item, index) in list" @click="onCardClick(item.carId)">
+                    <h3 class="xbig-font">{{item.brandName + item.seriesName}}({{item.carColor}})</h3>
+                    <p class="gray-font big-font">{{item.carNo}}</p>
                     <img src="../../assets/images/car.jpg" alt="">
                     <div class="hr"></div>
-                    <p class="left-font orange-font xbig-font" v-if="item.isOpen">
+                    <p class="left-font orange-font xbig-font" v-if="item.isDefault">
                         <i class="iconfont">&#xe721;</i>
                         当前车辆
                     </p>
-                    <p class="left-font xbig-font" @click.stop="onSelect(index)" v-else>
+                    <p class="left-font xbig-font" @click.stop="onSelect(index, item.carId)" v-else>
                         <i class="iconfont">&#xe720;</i>
                         设置为默认车辆
                     </p>
@@ -31,7 +31,8 @@
     import pageHeader from "../../components/page-header.vue";
     import loading from "../../components/loading.vue";
     import empty from "../../components/empty.vue";
-    import { MessageBox } from 'mint-ui';
+    import { ajaxGet } from "../../util.js";
+    import { MessageBox, Toast } from 'mint-ui';
     export default {
         components: {
             pageHeader,
@@ -50,37 +51,35 @@
         methods: {
             loadData() {
                 this.isLoading = true;
-                setTimeout(() => {
-                    this.list.push({
-                        name: "别克XXXXX",
-                        color: "蓝色",
-                        plate: "浙A·12345",
-                        isOpen: true
-                    },{
-                        name: "别克XXXXX",
-                        color: "蓝色",
-                        plate: "浙A·12345",
-                        isOpen: false
-                    });
+                ajaxGet("driver/car/page").then(data => {
+                    this.list = data.content;
                     this.isLoading = false;
-                }, 300);
+                });
             },
-            onSelect(index) {
-                this.list.forEach((obj, i) => {
-                    if(i == index) {
-                        obj.isOpen = true;
+            onSelect(index, carId) {
+                ajaxGet("driver/car/default", {
+                    carId: carId
+                }).then(data => {
+                    if(data.status === "SUCCESS") {
+                        Toast("设置默认车辆成功");
+                        this.list.forEach((obj, i) => {
+                            if(i == index) {
+                                obj.isDefault = true;
+                            } else {
+                                obj.isDefault = false;
+                            }
+                        });
                     } else {
-                        obj.isOpen = false;
+                        Toast(data.msg);
                     }
                 });
-                this.postData();
             },
-            postData() {
-                alert("postData");
-            },
-            onCardClick() {
+            onCardClick(id) {
                 this.$router.push({
-                    name: 'car/detail'
+                    name: 'car/detail',
+                    params: {
+                        id: id 
+                    }
                 });
             },
             onAddBtnClick() {

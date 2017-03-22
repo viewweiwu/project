@@ -9,10 +9,20 @@
         props: ['score'],
         computed: {
             "fullCount"() {
-                return Math.floor(this.score);
+                let flag = false;
+                let score = this.score * 10 % 10;
+                if(score >= 8) {
+                    flag = true;
+                }
+                return Math.floor(this.score) + (flag ? 1 : 0);
             },
             "halfCount"() {
-                return this.score * 10 % 10 > 0 ? 1 : 0;
+                let flag = false;
+                let score = this.score * 10 % 10;
+                if(score > 2 && score < 8) {
+                    flag = true;
+                }
+                return flag ? 1 : 0;
             }
         }
     }

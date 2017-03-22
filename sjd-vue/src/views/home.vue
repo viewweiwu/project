@@ -4,7 +4,7 @@
             <div class="user">
                 <div class="info" @click="onInfoClick">
                     <span class="face"><i class="iconfont">&#xe602;</i></span>
-                    <span class="name">司机名字</span>
+                    <span class="name">{{username}}</span>
                 </div>
                 <div class="report" @click="onReportClick">
                     <div class="average orange-font">{{score | count}}</div>
@@ -54,7 +54,7 @@
 <script>
     import pageHeader from "../components/page-header.vue";
     import star from "../components/star.vue";
-    import * as Cookies from 'es-cookie';
+    import { ajaxGet } from "../util.js";
     import { MessageBox } from 'mint-ui';
     export default {
         components: {
@@ -63,9 +63,17 @@
         },
         data() {
             return {
+                username: "-",
                 isOpen: false,
-                score: 4.5
+                score: 0
             }
+        },
+        mounted() {
+            ajaxGet("driver/index").then(data => {
+                let d = data.content;
+                this.username = d.driverName;
+                this.score = d.score.average;
+            });
         },
         methods: {
             onBtnClick() {
@@ -103,10 +111,11 @@
             },
             onLoginOutClick() {
                 MessageBox.confirm("确定要退出登录？").then(() => {
-                    this.$router.push({
-                        name: 'login/login'
-                    });
-                    Cookies.remove("username");
+                    ajaxGet("unbind").then(() => {
+                        this.$router.push({
+                            name: 'login/login'
+                        });
+                    })
                 }, () => {});
             },
             onRegisterClick() {

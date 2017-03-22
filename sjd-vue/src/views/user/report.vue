@@ -4,18 +4,9 @@
         <main class="main">
             <div class="top">
                 <p class="tip">近期服务评价平均星级</p>
-                <div class="average orange-font">{{score | count}}</div>
-                <star :score="score"></star>
-                <div class="rank">
-                    <div class="left">
-                        <p class="count">5.00</p>
-                        <p class="text">优秀司机平均星级</p>
-                    </div>
-                    <div class="right">
-                        <p class="count">55%</p>
-                        <p class="text">您的排名</p>
-                    </div>
-                </div>
+                <div class="average orange-font">{{score.average | count}}</div>
+                <star :score="score.average"></star>
+                
             </div>
             <div class="center">
                 <div class="title">
@@ -24,24 +15,24 @@
                 </div>
                 <ul class="list">
                     <li>
-                        <rank size="30"></rank>
+                        <rank :size="score.tidy"></rank>
                         <rank size="100" class="gray"></rank>
-                        <div class="text">老司机就是稳！</div>
+                        <div class="text">干净无异味</div>
                     </li>
                     <li>
-                        <rank size="30"></rank>
+                        <rank :size="score.safety"></rank>
                         <rank size="100" class="gray"></rank>
-                        <div class="text">老司机就是稳！</div>
+                        <div class="text">安全又平稳</div>
                     </li>
                     <li>
-                        <rank size="30"></rank>
+                        <rank :size="score.courtesy"></rank>
                         <rank size="100" class="gray"></rank>
-                        <div class="text">老司机就是稳！</div>
+                        <div class="text">安静有礼貌</div>
                     </li>
                     <li>
-                        <rank size="30"></rank>
+                        <rank :size="score.navigation"></rank>
                         <rank size="100" class="gray"></rank>
-                        <div class="text">老司机就是稳！</div>
+                        <div class="text">认路会导航</div>
                     </li>
                 </ul>
                 <div class="instr">
@@ -56,27 +47,27 @@
                 </div>
             </div>
             <div class="bottom">
-                <h2>您累计的评论星级</h2>
+                <h2>您累计的评论星级 {{total}}</h2>
                 <ul class="list">
                     <li>
-                        <rank :starCount="5" :size="90"></rank>
-                        <div class="text orange-font">50单</div>
+                        <rank :starCount="5" :size="five"></rank>
+                        <div class="text orange-font">{{detail[5]}}单</div>
                     </li>
                     <li>
-                        <rank :starCount="4" :size="80"></rank>
-                        <div class="text orange-font">5单</div>
+                        <rank :starCount="4" :size="four"></rank>
+                        <div class="text orange-font">{{detail[4]}}单</div>
                     </li>
                     <li>
-                        <rank :starCount="3"></rank>
-                        <div class="text orange-font">0单</div>
+                        <rank :starCount="3" :size="three"></rank>
+                        <div class="text orange-font">{{detail[3]}}单</div>
                     </li>
                     <li>
-                        <rank :starCount="2"></rank>
-                        <div class="text orange-font">0单</div>
+                        <rank :starCount="2" :size="two"></rank>
+                        <div class="text orange-font">{{detail[2]}}单</div>
                     </li>
                     <li>
-                        <rank :starCount="1"></rank>
-                        <div class="text orange-font">0单</div>
+                        <rank :starCount="1" :size="one"></rank>
+                        <div class="text orange-font">{{detail[1]}}单</div>
                     </li>
                 </ul>
             </div>
@@ -87,6 +78,8 @@
     import pageHeader from "../../components/page-header.vue";
     import star from "../../components/star.vue";
     import rank from "../../components/rank.vue";
+    import { ajaxGet } from "../../util.js";
+    import $ from 'jquery';
     export default {
         components: {
             pageHeader,
@@ -95,7 +88,55 @@
         },
         data() {
             return {
-                score: 3.6
+                detail: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0
+                },
+                score: {
+                    tidy: 0,
+                    safety: 0,
+                    courtesy: 0,
+                    navigation: 0,
+                    average: 0
+                }
+            }
+        },
+        mounted() {
+            ajaxGet("driver/index").then(data => this.filterData(data.content));
+        },
+        methods: {
+            filterData(d) {
+                this.score.average = d.score.average;
+                this.score.tidy = parseInt(d.score.tidy * 20);
+                this.score.safety = parseInt(d.score.safety * 20);
+                this.score.courtesy = parseInt(d.score.courtesy * 20);
+                this.score.navigation = parseInt(d.score.navigation * 20);
+                this.detail = d.detail;
+            }
+        },
+        computed: {
+            total() {
+                let result = 0;
+                Object.values(this.detail).forEach(obj => result += obj);
+                return result;
+            },
+            one() {
+                return this.detail[1] / this.total * 100;
+            },
+            two() {
+                return this.detail[2] / this.total * 100;
+            },
+            three() {
+                return this.detail[3] / this.total * 100;
+            },
+            four() {
+                return this.detail[4] / this.total * 100;
+            },
+            five() {
+                return this.detail[5] / this.total * 100;
             }
         },
         filters: {

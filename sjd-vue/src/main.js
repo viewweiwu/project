@@ -39,7 +39,7 @@ router.beforeEach((to, from, next) => {
     ];
     if (list.indexOf(to.name) >= 0) {
         // 校验 cookie
-        let name = Cookies.get('username');
+        let name = Cookies.get('_dc');
         if (name) {
             next();
         } else {

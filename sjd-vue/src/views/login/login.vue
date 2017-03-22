@@ -18,6 +18,9 @@
 <script>
     import inputCell from "../../components/inputCell.vue";
     import pageHeader from "../../components/page-header.vue";
+    import { Toast } from 'mint-ui';
+    import { ajaxPost, ajaxGet } from "../../util.js";
+    import $ from 'jquery';
     import * as Cookies from 'es-cookie';
     export default {
         components: {
@@ -46,10 +49,28 @@
                 this.password = value;
             },
             onLoginBtnClick() {
-                Cookies.set("username", "view", {expires: 7});
+                Cookies.set("_dc", "7ecfb.3..2.BHTRBB9BBvQtFxu.3.kVeehxTqHlXARGHtbZOh1macWEN8RVub22.3.CsPG8yxboqZh1gJ03MNDlMzg.1..1.");
                 this.$router.push({
                     name: "home"
-                })
+                });
+                // let postData = {
+                //     account: this.username,
+                //     password: this.password
+                // }
+                // ajaxPost("login/submit", postData).then((d) => {
+                //     if(d.status === "SUCCESS") {
+                //         this.$router.push({
+                //             name: "home"
+                //         });
+                //         console.log(d);
+                //     } else {
+                //         Toast({
+                //             message: d.msg,
+                //             position: 'middle',
+                //             duration: 3000
+                //         });
+                //     }
+                // });
             },
             onForgetPwdBtnClick() {
                 this.$router.push({

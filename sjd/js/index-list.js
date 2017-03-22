@@ -91,6 +91,9 @@ $(function() {
 				var top = $targetTitle[0].offsetTop;
 				// just set
 				this.$content[0].scrollTop = top;
+				
+				
+				var arr = Object.entries(obj);
 			}
 		}
 	}

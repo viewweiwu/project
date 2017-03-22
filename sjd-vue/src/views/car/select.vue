@@ -1,6 +1,6 @@
 <template>
     <div class="container car-select">
-        <page-header title="个人信息" leftArrow="true" @leftClick="$router.go(-1)" right="添加车型" @rightClick="onAddTypeBtnClick"></page-header>
+        <page-header title="车型选择" leftArrow="true" @leftClick="$router.go(-1)" right="添加车型" @rightClick="onAddTypeBtnClick"></page-header>
         <main class="main">
             <aside :class="['type-select',{full: isMove}]" ref="right" >
                 <ul>
@@ -12,14 +12,14 @@
                 <div class="type-pnl" v-for="t in typeList">
                     <div class="title">{{t.title}}</div>
                     <ul class="cell-list">
-                        <li v-for="item in t.list" @click.stop="onContentClick">{{item.text}}</li>
+                        <li v-for="item in t.list" @click.stop="onContentClick(item)">{{item.text}}</li>
                     </ul>
                 </div>
             </div>
             <div class="right-page parent" ref="parent">
                 <div class="content">
                     <ul class="cell-list" id="list">
-                        <li v-for="item in parentList" @click.stop="onParentClick">{{item.text}}</li>
+                        <li v-for="item in parentList" @click.stop="onParentClick(item)">{{item.text}}</li>
                     </ul>
                 </div>
                 <div class="right-page child" ref="child">
@@ -37,6 +37,7 @@
 <script>
     import $ from 'jquery';
     import pageHeader from "../../components/page-header.vue";
+    import { ajaxGet } from "../../util.js";
 
     export default {
         components: {
@@ -85,90 +86,31 @@
                 showText: "A",
                 selectText: {
                     content: "",
+                    contentId: "",
                     parent: "",
+                    parentId: "",
                     child: ""
                 },
                 isShow: false
             }
         },
         mounted() {
-            this.typeList = [{
-                title: "A",
-                list: [{
-                    "text": "奥迪",
-                },{
-                    "text": "奥利奥"
-                }]
-            }, {
-                title: "B",
-                list: [{
-                    text: "bilibili"
-                },{
-                    text: "bilibili"
-                },{
-                    text: "bilibili"
-                },{
-                    text: "bilibili"
-                },{
-                    text: "bilibili"
-                },{
-                    text: "bilibili"
-                },{
-                    text: "bilibili"
-                }]
-            }, {
-                title: "C",
-                list: [{
-                    text: "CCCCCCCCC"
-                },{
-                    text: "CCCCCCCCC"
-                },{
-                    text: "CCCCCCCCC"
-                }]
-            }, {
-                title: "D",
-                list: [{
-                    text: "DDD"
-                },{
-                    text: "DDD"
-                },{
-                    text: "DDD"
-                }]
-            }, {
-                title: "E",
-                list: [{
-                    text: "E"
-                },{
-                    text: "E"
-                },{
-                    text: "E"
-                }]
-            }, {
-                title: "F",
-                list: [{
-                    text: "F"
-                },{
-                    text: "F"
-                },{
-                    text: "F"
-                }]
-            }, {
-                title: "G",
-                list: [{
-                    text: "G"
-                },{
-                    text: "G"
-                },{
-                    text: "G"
-                }]
-            }];
             this.parentList = [{
                 text: "类型1"
             },{
                 text: "类型2"
-            }]
+            }];
+            this.getData();
         },
         methods: {
+            getData() {
+                ajaxGet("common/seriesTree").then(data => {
+                    this.typeList = data.map(obj => {
+                        obj.title = obj.initials;
+                        return obj;
+                    });
+                });
+            },
             onAddTypeBtnClick() {
                 this.$router.push({
                     name: 'car/addType'
@@ -185,14 +127,17 @@
                 // 移动到对应字母的坐标
                 this.scrollToTitle($target);
             },
-            onContentClick(e) {
-                let $target = $(e.target);
-                this.selectText.content = $target.text();
+            onContentClick(item) {
+                let $target = $(event.target);
+                this.parentList = item.children;
+                this.selectText.contentId = item.id;
+                this.selectText.content = item.text;
                 this.open($target, $(this.$refs.parent), $(this.$refs.child));
             },
-            onParentClick(e) {
-                let $target = $(e.target);
-                this.selectText.parent = $target.text();
+            onParentClick(item) {
+                let $target = $(event.target);
+                this.selectText.parentId = item.id;
+                this.selectText.parent = item.text;
                 this.open($target, $(this.$refs.child));
             },
             opChildClick(e) {

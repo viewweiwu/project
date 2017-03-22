@@ -22,7 +22,7 @@
                 font-size: @xx-big * 3;
             }
             .star {
-                margin: @space 0;
+                margin: @space 0 @size;
                 position: relative;
                 display: flex;
                 justify-content: center;
@@ -161,7 +161,6 @@
                         width: 70%;
                         height: @space * 2;
                         line-height: @space * 1.8;
-                        padding: 0 @space;
                         border: 1px solid @border-gray;
                         border-radius: @space;
                         color: @font-gray;
@@ -170,21 +169,24 @@
                         position: relative;
                         text-align: left;
                         float: left;
-                        i {
-                            font-size: @small;
-                            z-index: 1;
-                            position: relative;
-                            display: inline-block;
-                            transform: scale(.7) translateY(2%);
-                        }
-                        .size {
+                        .stars {
                             top: 0;
                             left: 0;
+                            padding-left: @space;
+                            position: absolute;
+                            i {
+                                font-size: @small;
+                                z-index: 1;
+                                position: relative;
+                                display: inline-block;
+                                transform: scale(.7) translateY(2%);
+                            }
+                        }
+                        .size {
                             width: 20%;
                             height: 100%;
                             border-radius: @space;
                             background-color: lighten(@font-gray, 30%);
-                            position: absolute;
                         }
                     }
                     .text {

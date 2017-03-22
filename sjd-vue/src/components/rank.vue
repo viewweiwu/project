@@ -1,6 +1,6 @@
 <template>
     <div class="rank">
-        <i class="iconfont" v-for="item in starCount">&#xe70b;</i>
+        <div class="stars"><i class="iconfont" v-for="item in starCount">&#xe70b;</i></div>
         <div class="size" :style="w"></div>
     </div>
 </template>
