@@ -90,7 +90,7 @@ const routers = [{
         });
     }
 }, {
-    path: '/car/detail:id',
+    path: '/car/detail/:id',
     name: 'car/detail',
     component(resolve) {
         require.ensure(['./views/car/detail.vue'], () => {
@@ -114,7 +114,7 @@ const routers = [{
         });
     }
 }, {
-    path: '/trip/detail:sn',
+    path: '/trip/detail/:sn',
     name: 'trip/detail',
     component(resolve) {
         require.ensure(['./views/trip/detail.vue'], () => {

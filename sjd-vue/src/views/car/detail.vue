@@ -2,29 +2,44 @@
     <div class="container car-detail">
         <page-header title="车辆详情" leftArrow="true" @leftClick="$router.go(-1)"></page-header>
         <main class="main">
-            <div class="card">
+            <div class="card" v-if="d.checkStatus === 'NORMAL'">
                 <p>
                     <i class="iconfont green-font">&#xe607;</i>
                 </p>
-                <p class="xbig-font green-font">审核成功</p>
-                <p class="gray-font">行驶证通过</p>
+                <p class="xbig-font green-font">审核通过</p>
+                <p class="gray-font">恭喜您，该车通过了审核！</p>
+            </div>
+            <div class="card" v-if="d.checkStatus === 'WAIT'">
+                <p>
+                    <i class="iconfont orange-font">&#xe682;</i>
+                </p>
+                <p class="xbig-font orange-font">正在审核</p>
+                <p class="gray-font">该车正在审核中...</p>
+            </div>
+            <div class="card" v-if="d.checkStatus === 'FAIL'">
+                <p>
+                    <i class="iconfont red-font">&#xe630;</i>
+                </p>
+                <p class="xbig-font red-font">审核失败</p>
+                <p class="gray-font">理由：{{d.checkReason | empty}}</p>
+                <p class="gray-font">抱歉，该车没有通过审核。</p>
             </div>
             <div class="card">
-                <h3 class="xbig-font">{{brandName + seriesName}}({{carColor}})</h3>
-                <p class="gray-font">{{carNo}}</p>
+                <h3 class="xbig-font">{{(d.brandName + d.seriesName) | empty}}({{d.carColor | empty}})</h3>
+                <p class="gray-font">{{d.carNo | empty}}</p>
                 <div class="hr"></div>
                 <div class="list">
                     <div>
-                        <span class="label">所在地</span>
-                        <span class="text">{{cityName}}</span>
+                        <span class="label">车主姓名</span>
+                        <span class="text">{{(d.carOwnerName || d.driverName) | empty}}</span>
                     </div>
                     <div>
-                        <span class="label">车主姓名</span>
-                        <span class="text">{{driverName}}</span>
+                        <span class="label">车型</span>
+                        <span class="text">{{d.modelName | empty}}</span>
                     </div>
                     <div>
                         <span class="label">车辆注册日期</span>
-                        <span class="text">{{regDate}}</span>
+                        <span class="text">{{d.regDate | empty}}</span>
                     </div>
                 </div>
             </div>
@@ -35,7 +50,7 @@
     </div>
 </template>
 <script>
-    import pageHeader from "../../components/page-header.vue";
+    import pageHeader from "../../components/pageHeader.vue";
     import { ajaxGet } from "../../util.js";
     import { MessageBox, Toast } from 'mint-ui';
     export default {
@@ -44,14 +59,7 @@
         },
         data() {
             return {
-                carNo: "-",
-                checkStatus: "待审核",
-                seriesName: "",
-                regDate: "-",
-                cityName: "-",
-                carColor: "-",
-                brandName: "-",
-                driverName: "-"
+                d: {}
             }
         },
         mounted() {
@@ -60,15 +68,7 @@
         methods: {
             getData() {
                 ajaxGet("driver/car/detail", {carId: this.$route.params.id}).then(data => {
-                    let d = data.content;
-                    this.carNo = d.carNo;
-                    this.checkStatus = d.checkStatus;
-                    this.seriesName = d.seriesName;
-                    this.regDate = d.regDate;
-                    this.cityName = d.cityName;
-                    this.carColor = d.carColor;
-                    this.brandName = d.brandName;
-                    this.driverName = d.driverName;
+                    this.d = data.content;
                 });
             },
             onDelBtnClick() {
@@ -82,6 +82,11 @@
                         }
                     });
                 }, () => {});
+            }
+        },
+        filters: {
+            empty(value) {
+                return value || "-";
             }
         }
     }

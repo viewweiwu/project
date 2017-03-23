@@ -14,7 +14,7 @@
     </div>
 </template>
 <script>
-    import pageHeader from "../components/page-header.vue";
+    import pageHeader from "../components/pageHeader.vue";
     import { ajaxGet, formatCurrency } from "../util.js";
     export default {
         components: {

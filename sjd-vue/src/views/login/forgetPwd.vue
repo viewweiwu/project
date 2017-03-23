@@ -13,7 +13,7 @@
 
 <script>
     import inputCell from "../../components/inputCell.vue";
-    import pageHeader from "../../components/page-header.vue";
+    import pageHeader from "../../components/pageHeader.vue";
     import { ajaxGet } from "../../util.js";
     export default {
         components: {
@@ -34,19 +34,22 @@
                 this.idCard = value;
             },
             onSubmitBtnClick() {
-                ajaxGet("password/step1", {
-                    phone: this.tel,
-                    idCard: this.idCard
-                }).then(data => {
-                    if(data.status === "SUCCESS") {
-                        this.$router.push({
-                            name: "login/forgetPwd2"
-                        })
-                        Toast("发送验证码成功");
-                    } else {
-                        this.toast(data.msg);
-                    }
+                this.$router.push({
+                    name: "login/forgetPwd2"
                 });
+                // ajaxGet("password/step1", {
+                //     phone: this.tel,
+                //     idCard: this.idCard
+                // }).then(data => {
+                //     if(data.status === "SUCCESS") {
+                //         this.$router.push({
+                //             name: "login/forgetPwd2"
+                //         })
+                //         Toast("发送验证码成功");
+                //     } else {
+                //         this.toast(data.msg);
+                //     }
+                // });
             }
         }
     }

@@ -1,6 +1,6 @@
 <template>
     <div class="container car-select">
-        <page-header title="车型选择" leftArrow="true" @leftClick="$router.go(-1)" right="添加车型" @rightClick="onAddTypeBtnClick"></page-header>
+        <page-header title="车型选择" leftArrow="true" @leftClick="$router.go(-1)"></page-header>
         <main class="main">
             <aside :class="['type-select',{full: isMove}]" ref="right" >
                 <ul>
@@ -36,7 +36,7 @@
 
 <script>
     import $ from 'jquery';
-    import pageHeader from "../../components/page-header.vue";
+    import pageHeader from "../../components/pageHeader.vue";
     import { ajaxGet } from "../../util.js";
 
     export default {

@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="bottom">
-                <h2>您累计的评论星级 {{total}}</h2>
+                <h2>您累计的评论星级</h2>
                 <ul class="list">
                     <li>
                         <rank :starCount="5" :size="five"></rank>
@@ -75,7 +75,7 @@
     </div>
 </template>
 <script>
-    import pageHeader from "../../components/page-header.vue";
+    import pageHeader from "../../components/pageHeader.vue";
     import star from "../../components/star.vue";
     import rank from "../../components/rank.vue";
     import { ajaxGet } from "../../util.js";

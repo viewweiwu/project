@@ -90,8 +90,68 @@
                 }
             }
         }
+        .layer {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .5);
+            z-index: 1;
+            position: absolute;
+            overflow: auto;
+            transform: translateY(-100%);
+            transition: transform 300ms;
+            &.open {
+                transform: translateY(0);
+            }
+            .card-list {
+                overflow: hidden;
+                .card {
+                    margin: @space;
+                    padding: @space;
+                    border-radius: @space / 2;
+                    border: 1px solid @border-gray;
+                    background-color: #fff;
+                    overflow: hidden;
+                    animation: leftIn 500ms;
+                    .left {
+                        width: 80%;
+                        float: left;
+                        p {
+                            font-size: @normal;
+                            overflow: hidden;
+                            .label {
+                                width: 30%;
+                                float: left;
+                            }
+                            .text {
+                                width: 70%;
+                                float: left;
+                            }
+                        }
+                    }
+                    .btn {
+                        width: 20%;
+                        height: .6rem;
+                        margin: 0;
+                        font-size: @normal;
+                        float: right;
+                    }
+                }
+                @keyframes leftIn {
+                    0% {
+                        transform: translateX(100%);
+                    }
+                    100% {
+                        transform: translateX(0);
+                    }
+                }
+
+            }
+        }
     }
     .footer {
+        z-index: 2;
         position: relative;
         .btn {
             left: 50%;

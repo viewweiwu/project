@@ -26,7 +26,7 @@
     </div>
 </template>
 <script>
-    import pageHeader from "../../components/page-header.vue";
+    import pageHeader from "../../components/pageHeader.vue";
     import loading from "../../components/loading.vue";
     import empty from "../../components/empty.vue";
     import { ajaxGet, formatCurrency } from "../../util.js";
@@ -49,45 +49,6 @@
             }
         },
         mounted() {
-            // let d = [{
-            //     "startAddress": "北京首都机场2号航站楼", // 开始地址
-            //     "amount": 112.5, //已支付 
-            //     "sn": "201703038769614",//订单编号
-            //     "time": "09:04", //时间
-            //     "productMappingName": "接机", // 类型
-            //     "endAddress": "北京火车站",//结束地址
-            //     "date": "03-03",// 月日
-            //     "orderStatus": "已派单" //订单状态 
-            // },
-            // {
-            //     "startAddress": "中国农业银行(深圳梅龙支行)",
-            //     "amount": 115.4,
-            //     "sn": "201703034212514",
-            //     "time": "08:53",
-            //     "productMappingName": "送机",
-            //     "endAddress": "深圳宝安国际机场新航站楼",
-            //     "date": "03-02",
-            //     "orderStatus": "待派单"
-            // },{
-            //     "startAddress": "中国农业银行(深圳梅龙支行)",
-            //     "amount": 115.4,
-            //     "sn": "201703034212514",
-            //     "time": "08:53",
-            //     "productMappingName": "送机",
-            //     "endAddress": "深圳宝安国际机场新航站楼",
-            //     "date": "03-01",
-            //     "orderStatus": "待派单"
-            // },{
-            //     "startAddress": "中国农业银行(深圳梅龙支行)",
-            //     "amount": 115.4,
-            //     "sn": "201703034212514",
-            //     "time": "08:53",
-            //     "productMappingName": "送机",
-            //     "endAddress": "深圳宝安国际机场新航站楼",
-            //     "date": "03-02",
-            //     "orderStatus": "待派单"
-            // }];
-            // this.list = this.filterList(d);
             this.loadData();
         },
         methods: {

@@ -2,11 +2,11 @@
     <div class="container trip-map">
         <page-header title="导航路线" leftArrow="true" @leftClick="$router.go(-1)"></page-header>
         <main class="main">
-            <div class="ctrl refresh" @click="onRefreshBtnClick">
+            <div class="ctrl" @click="onRefreshBtnClick">
                 <p>刷新</p>
                 <p>导航</p>
             </div>
-            <div class="ctrl" @click="onFollowBtnClick">
+            <div class="ctrl" @click="onFollowBtnClick" v-if="false">
                 <p>{{follow | toText}}</p>
                 <p>跟随</p>
             </div>
@@ -15,22 +15,34 @@
             </div>
         </main>
         <footer class="footer">
-            <button class="btn" @click="">完成导航</button>
+            <button class="btn" @click="onDoneBtnClick">完成订单</button>
         </footer>
     </div>
 </template>
 <script>
-    import pageHeader from "../../components/page-header.vue";
+    import pageHeader from "../../components/pageHeader.vue";
+    import { ajaxGet } from "../../util.js";
+    import { MessageBox, Toast } from 'mint-ui';
     export default {
         components: {
             pageHeader
         },
         data() {
             return {
-                follow: true
+                follow: true,
+                startLng: "",
+                startLat: "",
+                endLng: "",
+                endLat: "",
+                sn: ""
             }
         },
         mounted() {
+            this.startLng = this.$route.query.startLng;
+            this.startLat = this.$route.query.startLat;
+            this.endLng = this.$route.query.endLng;
+            this.endLat = this.$route.query.endLat;
+            this.sn = this.$route.query.sn;
             this.loadMap();
         },
         methods: {
@@ -49,7 +61,7 @@
                     map: map
                 }); 
                 // 根据起终点经纬度规划驾车导航路线
-                driving.search(new AMap.LngLat(120.318818,30.287778), new AMap.LngLat(120.325633,30.309347));
+                driving.search(new AMap.LngLat(this.startLng, this.startLat), new AMap.LngLat(this.endLng, this.endLat));
                 // 禁止跳转高德地图
                 main.addEventListener("click", (e) => {
                     if(e.target.parentNode.tagName == "A") {
@@ -58,7 +70,8 @@
                     }
                 });
                 this.map = map;
-                this.loadCurrPosition();
+                // 不需要跟随
+                //this.loadCurrPosition();
             },
             loadCurrPosition() {
                 let map = this.map;
@@ -75,6 +88,18 @@
                         }
                     }, 5000);
                 });
+            },
+            onDoneBtnClick() {
+                MessageBox.confirm('确定已经完成订单?').then(action => {
+                    ajaxGet("driver/order/complete/" + this.sn).then(data => {
+                        if(data.status === 'SUCCESS') {
+                            Toast("完成订单");
+                            this.$router.go(-1);
+                        } else {
+                            Toast(data.msg);
+                        }
+                    });
+                }, () => {});
             }
         },
         filters: {

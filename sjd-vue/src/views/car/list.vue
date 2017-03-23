@@ -7,15 +7,20 @@
                     <h3 class="xbig-font">{{item.brandName + item.seriesName}}({{item.carColor}})</h3>
                     <p class="gray-font big-font">{{item.carNo}}</p>
                     <img src="../../assets/images/car.jpg" alt="">
-                    <div class="hr"></div>
-                    <p class="left-font orange-font xbig-font" v-if="item.isDefault">
-                        <i class="iconfont">&#xe721;</i>
-                        当前车辆
-                    </p>
-                    <p class="left-font xbig-font" @click.stop="onSelect(index, item.carId)" v-else>
-                        <i class="iconfont">&#xe720;</i>
-                        设置为默认车辆
-                    </p>
+                        <div class="hr"></div>
+                    <template v-if="item.checkStatus === 'NORMAL'">
+                        <p class="left-font orange-font xbig-font" v-if="item.isDefault">
+                            <i class="iconfont">&#xe721;</i>
+                            当前车辆
+                        </p>
+                        <p class="left-font xbig-font" @click.stop="onSelect(index, item.carId)" v-else>
+                            <i class="iconfont">&#xe720;</i>
+                            设置为默认车辆
+                        </p>
+                    </template>
+                    <template v-else>
+                        <p class="gray-font">该车辆未通过审核，无法设置为默认车辆</p>
+                    </template>
                 </div>
             </div>
             <loading v-show="isLoading"></loading>
@@ -28,7 +33,7 @@
 </template>
 
 <script>
-    import pageHeader from "../../components/page-header.vue";
+    import pageHeader from "../../components/pageHeader.vue";
     import loading from "../../components/loading.vue";
     import empty from "../../components/empty.vue";
     import { ajaxGet } from "../../util.js";

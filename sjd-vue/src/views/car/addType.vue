@@ -16,7 +16,7 @@
 </template>
 <script>
     import inputCell from "../../components/inputCell.vue";
-    import pageHeader from "../../components/page-header.vue";
+    import pageHeader from "../../components/pageHeader.vue";
     export default {
         components: {
             inputCell,

@@ -5,6 +5,9 @@
         overflow-x: hidden;
         overflow-y: auto;
         position: relative;
+        &.no-footer {
+            height: e('calc(100% - 1rem)');
+        }
         .card-list {
             overflow: hidden;
             h3 {
