@@ -66,9 +66,16 @@ const formatDate = (value) => {
     return result;
 }
 
+const telReg = /^[1]\d{10}$/;
+const idCardReg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+const plateReg = /^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$/;
+
 export {
     ajaxPost,
     ajaxGet,
     formatCurrency,
-    formatDate
+    formatDate,
+    telReg,
+    idCardReg,
+    plateReg
 }

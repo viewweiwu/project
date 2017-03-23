@@ -2,11 +2,11 @@
     <div class="container trip-map">
         <page-header title="导航路线" leftArrow="true" @leftClick="$router.go(-1)"></page-header>
         <main class="main">
-            <div class="ctrl" @click="onRefreshBtnClick">
+            <div class="ctrl refresh" @click="onRefreshBtnClick">
                 <p>刷新</p>
                 <p>导航</p>
             </div>
-            <div class="ctrl" @click="onFollowBtnClick" v-if="false">
+            <div class="ctrl" @click="onFollowBtnClick" >
                 <p>{{follow | toText}}</p>
                 <p>跟随</p>
             </div>
@@ -71,7 +71,7 @@
                 });
                 this.map = map;
                 // 不需要跟随
-                //this.loadCurrPosition();
+                this.loadCurrPosition();
             },
             loadCurrPosition() {
                 let map = this.map;

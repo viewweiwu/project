@@ -19,7 +19,7 @@
     import inputCell from "../../components/inputCell.vue";
     import pageHeader from "../../components/pageHeader.vue";
     import { Toast } from 'mint-ui';
-    import { ajaxPost, ajaxGet } from "../../util.js";
+    import { ajaxPost, ajaxGet, telReg } from "../../util.js";
     import $ from 'jquery';
     import * as Cookies from 'es-cookie';
     export default {
@@ -49,6 +49,9 @@
                 this.password = value;
             },
             onLoginBtnClick() {
+                this.validate() && this.login();
+            },
+            login() {
                 // Cookies.set("_dc", "7ecfb.3..2.BHTRBB9BBvQtFxu.3.kVeehxTqHlXARGHtbZOh1macWEN8RVub22.3.CsPG8yxboqZh1gJ03MNDlMzg.1..1.");
                 // this.$router.push({
                 //     name: "home"
@@ -72,6 +75,17 @@
                     }
                 });
             },
+            validate() {
+                let result = true;
+                if(!telReg.test(this.username.trim())) {
+                    Toast("请输入正确的手机号");
+                    result = false;
+                } else if (this.password.trim() === "") {
+                    Toast("请输入密码");
+                    result = false;
+                }
+                return result;
+            },
             onForgetPwdBtnClick() {
                 this.$router.push({
                     name: 'login/forgetPwd'
@@ -88,11 +102,6 @@
 
 <style lang="less">
     @import "../../assets/less/cell-input";
-    .cell-input {
-        label {
-            width: @size;
-        }
-    }
     .container.login {
         .btns {
             color: @orange;

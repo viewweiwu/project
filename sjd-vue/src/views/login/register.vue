@@ -47,7 +47,7 @@
     import platePicker from "../../components/platePicker.vue";
     import modelPicker from "../../components/modelPicker.vue";
     import pageHeader from "../../components/pageHeader.vue";
-    import { ajaxGet, ajaxPost, formatDate } from "../../util.js";
+    import { ajaxGet, ajaxPost, telReg, idCardReg, plateReg, formatDate } from "../../util.js";
     import { MessageBox, Toast } from 'mint-ui';
     export default {
         components: {
@@ -218,7 +218,6 @@
                     idCard : this.idCard,
                     city_id: this.city.cityId
                 }
-                console.log(postData);
                 ajaxPost("register/submit", postData).then(data => {
                     if(data.status === "SUCCESS") {
                         MessageBox.alert("注册成功！");
@@ -239,6 +238,9 @@
                 } else if (this.plateFirst === "" || this.plateLast === "" ||　this.plateLast.length !== 6) {
                     Toast("请完善车牌号");
                     result = false;
+                } else if (!plateReg.test(this.plateFirst + this.plateLast)) {
+                    Toast("请输入正确的车牌号");
+                    result = false;
                 } else if (this.selectTypeData === "") {
                     Toast("请选择车系");
                     result = false;
@@ -257,8 +259,8 @@
                 } else if (this.userName.trim() === "") {
                     Toast("请输入司机姓名");
                     result = false;
-                } else if (this.tel.trim() === "") {
-                    Toast("请输入手机号码");
+                } else if (!telReg.test(this.tel.trim())) {
+                    Toast("请输入正确的手机号");
                     result = false;
                 } else if (this.pwd.trim() === "") {
                     Toast("请输入密码");
@@ -266,8 +268,8 @@
                 } else if (this.pwd.trim() !== this.repwd.trim()) {
                     Toast("两次密码不一致");
                     result = false;
-                } else if (this.idCard.trim() === "") {
-                    Toast("请输入身份证号码");
+                } else if (!idCardReg.test(this.idCard.trim())) {
+                    Toast("请输入正确的身份证");
                     result = false;
                 }
                 return result;
