@@ -3,7 +3,7 @@
         <page-header title="登陆"></page-header>
         <main class="main">
             <div class="logo">
-                <img src="../../assets/images/logo.jpg" alt="">
+                <img src="../../assets/images/logo.png" alt="">
             </div>
             <ul class="cell-list cell-input">
                 <input-cell label="手机" type="text" @input="onUsernameInput" max="11"></input-cell>
@@ -104,11 +104,13 @@
 
 <style lang="less">
     @import "../../assets/less/cell-input";
-    .container.login {
+    .container.login {  
         .logo {
+			margin-top: @space * 1.5;
             text-align: center;
             img {
-                width: 50%;
+				height: @size * 1.5;
+                max-width: 50%;
             }
         }
         .btns {
