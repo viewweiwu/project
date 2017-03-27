@@ -63,15 +63,14 @@
                 // 根据起终点经纬度规划驾车导航路线
                 driving.search(new AMap.LngLat(this.startLng, this.startLat), new AMap.LngLat(this.endLng, this.endLat));
                 // 禁止跳转高德地图
-                main.addEventListener("click", (e) => {
-                    if(e.target.parentNode.tagName == "A") {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                });
+                // main.addEventListener("click", (e) => {
+                //     if(e.target.parentNode.tagName == "A") {
+                //         e.preventDefault();
+                //         e.stopPropagation();
+                //     }
+                // });
                 this.map = map;
-                // 不需要跟随
-                this.loadCurrPosition();
+                this.follow && this.loadCurrPosition();
             },
             loadCurrPosition() {
                 let map = this.map;

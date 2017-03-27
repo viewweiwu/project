@@ -10,6 +10,10 @@
                         <span class="text">{{d.tcOrderId | empty}}</span>
                     </p>
                     <p>
+                        <span class="label">航班号:</span>
+                        <span class="text">{{d.flt | empty}}</span>
+                    </p>
+                    <p>
                         <span class="label">预估价:</span>
                         <span class="text">{{d.amount | empty | currentcy}}</span>
                     </p>

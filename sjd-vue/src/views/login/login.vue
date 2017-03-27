@@ -2,6 +2,9 @@
     <div class="container login">
         <page-header title="登陆"></page-header>
         <main class="main">
+            <div class="logo">
+                <img src="../../assets/images/logo.jpg" alt="">
+            </div>
             <ul class="cell-list cell-input">
                 <input-cell label="手机" type="text" @input="onUsernameInput" max="11"></input-cell>
                 <input-cell label="密码" type="password" @input="onPasswordInput" max="20"></input-cell>
@@ -65,7 +68,6 @@
                         this.$router.push({
                             name: "home"
                         });
-                        console.log(d);
                     } else {
                         Toast({
                             message: d.msg,
@@ -103,6 +105,12 @@
 <style lang="less">
     @import "../../assets/less/cell-input";
     .container.login {
+        .logo {
+            text-align: center;
+            img {
+                width: 50%;
+            }
+        }
         .btns {
             color: @orange;
             margin: @space;

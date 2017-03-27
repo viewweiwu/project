@@ -224,6 +224,7 @@
                         this.$router.replace({
                             name: 'login/login',
                         });
+                        sessionStorage.removeItem("registerData");
                     } else {
                         Toast(data.msg);
                     }

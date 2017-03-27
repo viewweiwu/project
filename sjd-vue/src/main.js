@@ -23,6 +23,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+    let openId = Cookies.get('_openid');
     let list = [
         "car/add",
         "car/detail",
@@ -37,6 +38,11 @@ router.beforeEach((to, from, next) => {
         "resetPwd",
         "purse",
     ];
+    if (!openId) {
+        let href = "/wxauthorize/authorize?callback_url=" + encodeURIComponent(location.href.replace(/\?.*#/g, "#"));
+        // location.href = href;
+    }
+
     if (list.indexOf(to.name) >= 0) {
         // 校验 cookie
         let name = Cookies.get('_dc');

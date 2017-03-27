@@ -32,7 +32,7 @@
     import platePicker from "../../components/platePicker.vue";
     import modelPicker from "../../components/modelPicker.vue";
     import pageHeader from "../../components/pageHeader.vue";
-    import { ajaxGet, ajaxPost, formatDate } from "../../util.js";
+    import { ajaxGet, ajaxPost, plateReg, formatDate } from "../../util.js";
     import { Toast } from 'mint-ui';
     export default {
         components: {
@@ -62,7 +62,6 @@
                 sessionStorage.removeItem("selectTypeData");
             }
             this.save();
-            console.log(this.$router);
         },
         methods: {
             onPlateInput() {
@@ -149,6 +148,7 @@
                                 id: data.content
                             }
                         });
+                        sessionStorage.removeItem("addCarData");
                     } else {
                         Toast(data.msg);
                     }
@@ -163,8 +163,14 @@
                 } else if (this.plateFirst === "" || this.plateLast === "" ||　this.plateLast.length !== 6) {
                     Toast("请完善车牌号");
                     result = false;
-                } else if (this.selectTypeData.child === "") {
-                    Toast("请完善车型");
+                } else if (!plateReg.test(this.plateFirst + this.plateLast)) {
+                    Toast("请输入正确的车牌号");
+                    result = false;
+                } else if (this.selectTypeData === "") {
+                    Toast("请选择车系");
+                    result = false;
+                } else if (this.model.name === "") {
+                    Toast("请选择车型");
                     result = false;
                 } else if (this.ownerName.trim() === "") {
                     Toast("请输入姓名");

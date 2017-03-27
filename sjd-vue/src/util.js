@@ -1,5 +1,4 @@
 import $ from 'jquery';
-
 const base = "http://www.abc.com/d/";
 const ajaxPost = (api, data = null) => {
     return new Promise((resolve, reject) => {

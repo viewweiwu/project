@@ -4,7 +4,7 @@
         <main class="main">
             <aside :class="['type-select',{full: isMove}]" ref="right" >
                 <ul>
-                    <li v-for="item in alphabet" @touchstart="onStart" @touchmove="onMove" @touchend="onEnd"><span>{{item}}</span></li>
+                    <li v-for="item in alphabet" :key="item" @touchstart="onStart" @touchmove="onMove" @touchend="onEnd"><span>{{item}}</span></li>
                 </ul>
             </aside>
             <div class="type-show" v-show="isShow">{{showText}}</div>
@@ -12,20 +12,20 @@
                 <div class="type-pnl" v-for="t in typeList">
                     <div class="title">{{t.title}}</div>
                     <ul class="cell-list">
-                        <li v-for="item in t.list" @click.stop="onContentClick(item)">{{item.text}}</li>
+                        <li v-for="item in t.list" @click.stop="onContentClick(item)" :key="item.id">{{item.text}}</li>
                     </ul>
                 </div>
             </div>
             <div class="right-page parent" ref="parent">
                 <div class="content">
                     <ul class="cell-list" id="list">
-                        <li v-for="item in parentList" @click.stop="onParentClick(item)">{{item.text}}</li>
+                        <li v-for="item in parentList" @click.stop="onParentClick(item)" :key="item.id">{{item.text}}</li>
                     </ul>
                 </div>
                 <div class="right-page child" ref="child">
                     <div class="content">
                         <ul class="cell-list">
-                            <li v-for="item in colors" @click.stop="opChildClick">{{item.text}}<span :class="item.style"></span></li>
+                            <li v-for="item in colors" @click.stop="opChildClick" :key="item.style">{{item.text}}<span :class="item.style"></span></li>
                         </ul>
                     </div>
                 </div>
